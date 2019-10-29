@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert a new movie</title>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+<h1>Insert a new movie</h1>
+	<div class="row">
+		<div class="col-md-8">	
+			<form action="#" th:object="${peliculaForm}" th:action="@{/insertarPelicula}" method="POST">
+			<div class="form-gruop">
+				<label>Titulo</label>
+				<input type="text" th:field="*{titulo}" placeholder="Titulo">
+				<div th:if="${#fields.hasErrors('titulo')}">Debe ingresar un titulo que contenga como minimo 2 caracteres y un maximo de 50</div>				
+			</div>
+			
+			
+				<div class="form-gruop">
+				<label>Total de películas</label>
+				<input type="text" th:field="*{totalPeliculas}" placeholder="Total de peliculas">
+				<div th:if="${#fields.hasErrors('totalPeliculas')}">Debe ingresar mas 0 una peliculas</div>
+			</div>
+			<div class="form-gruop">
+				<label>Genero de la pelicula:</label>
+				<select th:field="*{codGenero}">
+				<!-- con $ trae datos del model -->
+				<!-- el value es como el id y el text es lo que ve la persona -->
+					<option th:each="generoActual:${generos}" th:value="${generoActual.codGenero}" th:text="${generoActual.nombreGenero}"></option>
+				</select>
+				<div th:if="${#fields.hasErrors('codGenero')}">Debe ingresar un genero</div>
+			</div>
+			<div class="form-gruop">	
+				<label>
+					<input type="checkbox" th:field ="*{subtitulada}"> Subtitulada
+				</label>
+			</div>	
+			<div class="form-gruop">
+				<label>
+					<input type="checkbox" th:flied="@{estreno}"> Estreno
+				</label>
+			</div>
+				<input type="submit" value="Enviar" class="btn btn-primary"> 
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
