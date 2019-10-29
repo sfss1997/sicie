@@ -1,0 +1,3 @@
+Para utilizar angular recordar instalar nodejs y angular cli
+Antes de correr el proyecto recordar instalar las dependencias con: npm install
+El comando para correr el proyecto es: npm run start

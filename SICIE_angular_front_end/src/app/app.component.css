@@ -1,0 +1,12 @@
+.content{
+    align-self: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+    max-width: 100%;
+    width: 100%;
+ 
+}
+
