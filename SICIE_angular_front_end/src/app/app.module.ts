@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuRecintoComponent } from './menu-recinto/menu-recinto.component';
 import { MenuCoordinacionComponent } from './menu-coordinacion/menu-coordinacion.component';
 import { MenuCoordinacionDocentesComponent } from './menu-coordinacion-docentes/menu-coordinacion-docentes.component';
-import { CoordinacionDocentesRegistroComponent } from './coordinacion-docentes-registro/coordinacion-docentes-registro.component';
 import { CoordinacionDocentesEditarComponent } from './coordinacion-docentes-editar/coordinacion-docentes-editar.component';
 import { CoordinacionDocentesRegistrarComponent } from './coordinacion-docentes-registrar/coordinacion-docentes-registrar.component';
+import { NavbarGeneralComponent } from './navbar-general/navbar-general.component';
+import { NavbarCoordinacionComponent } from './navbar-coordinacion/navbar-coordinacion.component';
 
 
 @NgModule({
@@ -18,9 +19,10 @@ import { CoordinacionDocentesRegistrarComponent } from './coordinacion-docentes-
     MenuRecintoComponent,
     MenuCoordinacionComponent,
     MenuCoordinacionDocentesComponent,
-    CoordinacionDocentesRegistroComponent,
     CoordinacionDocentesEditarComponent,
-    CoordinacionDocentesRegistrarComponent
+    CoordinacionDocentesRegistrarComponent,
+    NavbarGeneralComponent,
+    NavbarCoordinacionComponent
   ],
   imports: [
     BrowserModule,
