@@ -1,0 +1,74 @@
+
+
+.row-form{
+ 
+    margin-left: 40%;
+    margin-right: 40%;
+    align-self: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 20%;
+    text-align: center;
+}
+
+
+.input{
+    align-self: center;
+    margin-top: 30%;
+    width: 100%;
+    padding: 2%px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    align-self: center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn{
+    margin-top: 20%;
+    text-align: center;
+    align-self:center;
+    background-color: #00c0f3;
+    color: white;
+    display:inline-block; 
+    
+}
+
+.row-label{
+    align-self: center;
+    align-content: center;
+    max-width: 100%;
+    width: 100%;
+}
+.title{
+    color: #00c0f3;
+    margin-top: 8%;
+    align-self: center;
+    align-content: center;
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+    size: 200%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.dropdown{
+    max-width: 100%; width: 100%;
+}
+#dropdownMenuButton{
+    max-width: 100%; width: 100%;
+}
+.dropdown-menu{
+
+    max-width: 100%; width: 100%;
+}
+.dropdown-item{
+    max-width: 100%; width: 100%;
+}

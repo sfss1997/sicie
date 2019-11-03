@@ -2,7 +2,6 @@
 
 .row-form{
  
-    margin-top: 2%;
     margin-left: 40%;
     margin-right: 40%;
     align-self: center;
@@ -10,16 +9,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 20%;
+    max-width: 40%;
     text-align: center;
 }
 
 
 .input{
     align-self: center;
-    margin-top: 30%;
     width: 100%;
-    padding: 2%px;
+    padding: 2%;
     border: 2px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -32,7 +30,7 @@
 }
 
 .btn{
-    margin-top: 20%;
+    margin-top: 15%;
     text-align: center;
     align-self:center;
     background-color: #00c0f3;
@@ -48,11 +46,30 @@
     width: 100%;
 }
 .title{
+    color: #00c0f3;
+    margin-top: 4%;
     align-self: center;
     align-content: center;
     max-width: 100%;
     width: 100%;
     text-align: center;
     size: 200%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.label{
+    color: black;
+    margin-top: 4%;
+  
+    max-width: 100%;
+    width: 100%;
     
+    size: 200%;
+    font-size: 16px;
+    font-weight: bold;
+}
+.row{
+
+    margin-top: 2%;
 }
