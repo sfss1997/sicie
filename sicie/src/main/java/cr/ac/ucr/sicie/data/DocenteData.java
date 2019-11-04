@@ -1,4 +1,4 @@
-package com.sitio.docentes.data;
+package cr.ac.ucr.sicie.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sitio.docentes.domain.Docente;
+import cr.ac.ucr.sicie.domain.Docente;
 
 @Repository
 public class DocenteData {

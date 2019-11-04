@@ -1,4 +1,4 @@
-package com.sitio.docentes.domain;
+package cr.ac.ucr.sicie.domain;
 
 import java.util.List;
 
