@@ -1,4 +1,4 @@
-package com.sitio.carrera.data;
+package cr.ac.ucr.sicie.data;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.sitio.carrera.data.DocenteData;
-import com.sitio.carrera.domain.Docente;
+import cr.ac.ucr.sicie.data.DocenteData;
+import cr.ac.ucr.sicie.domain.Docente;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

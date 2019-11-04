@@ -1,4 +1,4 @@
-package com.sitio.carrera;
+package cr.ac.ucr.sicie;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

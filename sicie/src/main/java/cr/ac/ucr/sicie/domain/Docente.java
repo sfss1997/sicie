@@ -3,7 +3,7 @@ package cr.ac.ucr.sicie.domain;
 import java.util.List;
 
 public class Docente {
-	
+	private int idDocente;
 	private String correoInstitucional;
 	private String nombre;
 	private String apellidos;
@@ -13,11 +13,12 @@ public class Docente {
 	private boolean activo;
 	
 	
-	public Docente(String correoInstitucional, String nombre, String apellidos, String gradoAcademico,
+	public Docente(int idDocente,String correoInstitucional, String nombre, String apellidos, String gradoAcademico,
 			List<String> topicosDeInteres, List<String> especializacion, boolean activo) {
 		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
 				gradoAcademico.equals("") || topicosDeInteres.equals("")) new RuntimeException("Las etiquetas viene vacías");
 		if (especializacion.isEmpty()) new RuntimeException("La lista especialización viene vacía");
+		this.idDocente = idDocente;
 		this.correoInstitucional = correoInstitucional;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -27,10 +28,10 @@ public class Docente {
 		this.activo = activo;
 	}
 	
-	public Docente(String correoInstitucional, String nombre, String apellidos, String gradoAcademico, boolean activo) {
+	public Docente(int idDocente,String correoInstitucional, String nombre, String apellidos, String gradoAcademico, boolean activo) {
 		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
 				gradoAcademico.equals("")) new RuntimeException("Las etiquetas viene vacías");
-		
+		this.idDocente = idDocente;
 		this.correoInstitucional = correoInstitucional;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -38,6 +39,15 @@ public class Docente {
 		this.activo = activo;
 	}
 
+	
+
+	public int getIdDocente() {
+		return idDocente;
+	}
+
+	public void setIdDocente(int idDocente) {
+		this.idDocente = idDocente;
+	}
 
 	public String getCorreoInstitucional() {
 		return correoInstitucional;

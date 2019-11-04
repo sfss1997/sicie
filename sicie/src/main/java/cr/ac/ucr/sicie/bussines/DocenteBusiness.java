@@ -13,7 +13,7 @@ public class DocenteBusiness {
 	private DocenteData docenteData;
 	
 	
-	public void guardarDocente(Docente docente, String nombreRecinto) {
+	public void guardarDocente(Docente docente, int nombreRecinto) {
 		docenteData.guardarDocente(docente, nombreRecinto);
 	}
 }
