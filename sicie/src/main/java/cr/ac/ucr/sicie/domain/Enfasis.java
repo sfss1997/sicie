@@ -1,6 +1,9 @@
-package cr.ac.ucr.sicie.domain;
+import java.util.*;
 
 public class Enfasis {
-private int idEnfasis;
-private String nombreEnfasis;
+
+	private Collection<Curso> cursos;
+	private int idEnfasis;
+	private int nombreEnfasis;
+
 }
