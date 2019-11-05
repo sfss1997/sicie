@@ -11,8 +11,8 @@ export class MenuCoordinacionDocentesComponent  {
   displayedColumns = ['id', 'name', 'progress', 'color','estado'];
   dataSource: MatTableDataSource<UserData>;
 
-  @ViewChild(MatPaginator,{static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort,{static: true}) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   constructor() {
     // Create 100 users
@@ -50,8 +50,7 @@ function createNewUser(id: number): UserData {
     name: name,
     progress: Math.round(Math.random() * 100).toString(),
     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
-    estado: 'activo',
-  
+    estado:'activo'
   };
 }
 
