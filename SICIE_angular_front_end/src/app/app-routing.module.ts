@@ -5,6 +5,7 @@ import { MenuRecintoComponent } from './menu-recinto/menu-recinto.component';
 import { MenuCoordinacionComponent } from './menu-coordinacion/menu-coordinacion.component';
 import { NavbarGeneralComponent } from './navbar-general/navbar-general.component';
 import { MenuCoordinacionDocentesComponent } from './menu-coordinacion-docentes/menu-coordinacion-docentes.component';
+import { CoordinacionDocentesEditarComponent } from './coordinacion-docentes-editar/coordinacion-docentes-editar.component';
 
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'recinto' , component: MenuRecintoComponent},
   {path: 'coordinacion' , component:  MenuCoordinacionComponent},
   {path: '' , component:  NavbarGeneralComponent},
-  {path: 'docentes', component: MenuCoordinacionDocentesComponent}
+  {path: 'docentes', component: MenuCoordinacionDocentesComponent},
+  {path: 'docentes/editar', component: CoordinacionDocentesEditarComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
