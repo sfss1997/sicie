@@ -3,7 +3,7 @@ package cr.ac.ucr.sicie.domain;
 import java.io.File;
 import java.util.*;
 
-public class PlanDeEstudio {
+public class PlanEstudios {
 
     private List<Curso> cursos;
     private String codigo;
@@ -13,10 +13,10 @@ public class PlanDeEstudio {
     private boolean vigente;
     private File resolucionDeCreacionDeCarrera;
 
-    public PlanDeEstudio() {
+    public PlanEstudios() {
     }
 
-    public PlanDeEstudio(List<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, File documentoFundamentacionCarrera, boolean vigente, File resolucionDeCreacionDeCarrera) {
+    public PlanEstudios(List<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, File documentoFundamentacionCarrera, boolean vigente, File resolucionDeCreacionDeCarrera) {
         this.cursos = cursos;
         this.codigo = codigo;
         this.nombreCarrera = nombreCarrera;
