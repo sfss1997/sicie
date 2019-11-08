@@ -28,7 +28,7 @@
     <ng-container matColumnDef="progress">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
       <mat-cell *matCellDef="let row"> 
-          <a  href="/docentes/editar" style="background-color:  #00c0f3;color: white;;" mat-button >  {{row.progress}}% </a>
+          <a  href="/docentes/editar" style="background-color:  #00c0f3;color: white;" mat-button >  {{row.progress}}% </a>
         </mat-cell>
     </ng-container>
 
@@ -63,7 +63,7 @@
       <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
      </mat-paginator>
         <span class="example-spacer"></span>
-        <a style="background-color:  #00c0f3;color: white; margin-left: 60%;" mat-button>Ingresar</a>
+        <a href="/docentes/registrar" style="background-color:  #00c0f3;color: white; margin-left: 60%;" mat-button>Registrar</a>
         
     
       </mat-toolbar-row>
