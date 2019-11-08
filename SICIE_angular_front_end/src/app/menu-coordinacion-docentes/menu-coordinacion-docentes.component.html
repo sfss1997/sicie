@@ -19,13 +19,13 @@
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black;"> ID </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
     </ng-container>
 
     <!-- Progress Column -->
     <ng-container matColumnDef="progress">
-      <mat-header-cell *matHeaderCellDef> Editar </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black;"> Editar </mat-header-cell>
       <mat-cell *matCellDef="let row">
         
           <a href="/docentes/editar">
@@ -36,13 +36,13 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Docente </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black;"> Docente </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="color">
-      <mat-header-cell *matHeaderCellDef> Eliminar </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black;"> Eliminar </mat-header-cell>
       <mat-cell *matCellDef="let row">
           <a href="/docentes/editar">
             <img width="20" alt="edit" src="assets/delete.png" />
@@ -51,8 +51,8 @@
     </ng-container>
 
     <ng-container matColumnDef="estado">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="row.color">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black;"> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let row" style="color: black">
         {{row.estado}}
       </mat-cell>
     </ng-container>
@@ -64,7 +64,7 @@
 
   <mat-toolbar>
     <mat-toolbar-row>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25]">
+      <mat-paginator [pageSizeOptions]="[5, 10, 25]" style="background-color: #F3F3F3; color: black;" >
       </mat-paginator>
       <a href="/docentes/registrar" style="background-color:  #00c0f3;color: white; margin-left: 50%;"
         mat-button>Registrar</a>
