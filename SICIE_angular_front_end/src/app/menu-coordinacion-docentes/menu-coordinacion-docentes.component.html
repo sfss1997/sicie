@@ -6,6 +6,7 @@
 
 <div class="content">
 
+<label class="title2">Gestion del personal docente</label>
 
 <div class="example-header">
   <mat-form-field>
@@ -19,13 +20,13 @@
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black;"> ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> ID </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
     </ng-container>
 
     <!-- Progress Column -->
     <ng-container matColumnDef="progress">
-      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black;"> Editar </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black; font-size: 100%;"> Editar </mat-header-cell>
       <mat-cell *matCellDef="let row">
         
           <a href="/docentes/editar">
@@ -36,22 +37,22 @@
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black;"> Docente </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Docente </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="color">
-      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black;"> Eliminar </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black; font-size: 100%;"> Eliminar </mat-header-cell>
       <mat-cell *matCellDef="let row">
-          <a href="/docentes/editar">
+          <a>
             <img width="20" alt="edit" src="assets/delete.png" />
           </a>
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="estado">
-      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black;"> Estado </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Estado </mat-header-cell>
       <mat-cell *matCellDef="let row" style="color: black">
         {{row.estado}}
       </mat-cell>
