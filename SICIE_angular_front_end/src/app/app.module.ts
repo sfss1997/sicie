@@ -49,6 +49,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
   MatFormFieldModule,
+  MatOptionModule,
   
 } from '@angular/material';
 
@@ -97,6 +98,9 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatOptionModule,
+   
+   
   ],
   imports: [
     BrowserModule,
@@ -112,7 +116,10 @@ import {
     MatNativeDateModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatToolbarModule,
+    MatOptionModule,
+    MatSelectModule
 
   ],
   providers: [],
