@@ -5,38 +5,37 @@
 </div>
 
 
-
 <main class="my-form">
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Registrar</div>
+                    <div class="card-header" style="background-color:  #00c0f3;color: white ;">Registrar un nuevo docente</div>
                     <div class="card-body">
                         <form name="my-form" onsubmit="return validform()" action="success.php" method="">
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Nombre</label>
+                            <div class="form-group row" style="margin-top: 2%;">
+                                <label for="name" style="align-self:auto; width: 20%;  margin-left: 20%;">Nombre</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="name">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="secondName" class="col-md-4 col-form-label text-md-right">Apellidos</label>
+                                <label for="secondName" style="align-self:auto; width: 20%;  margin-left: 20%;">Apellidos</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="secondName">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">Correo</label>
+                                <label for="email" style="align-self:auto; width: 20%;  margin-left: 20%;">Correo</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="email">
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="academicDegree" class="col-md-4 col-form-label text-md-right">Grado
+                                <label for="academicDegree" style="align-self:auto; width: 20%;  margin-left: 20%;">Grado
                                     academico</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="academicDegree">
@@ -44,7 +43,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <mat-label class="col-md-4 col-form-label text-md-right" style="align-self: flex-start;">Especializacion</mat-label>
+                                <mat-label style="align-self:auto; width: 20%;  margin-left: 20%;">Especializacion</mat-label>
                                 <div class="col-md-6">
                                     <mat-form-field>
                                         <mat-select [formControl]="toppings" multiple>
@@ -56,7 +55,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <mat-label class="col-md-4 col-form-label text-md-right" style="align-self: flex-start;">Topicos de interes</mat-label>
+                                <mat-label style="align-self:auto; width: 20%; margin-left: 20%;">Topicos de interes</mat-label>
                                 <div class="col-md-6">
                                     <mat-form-field>
                                         <mat-select [formControl]="toppings" multiple>
@@ -71,7 +70,7 @@
 
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary"
-                                    style="background-color: #00c0f3; border-color: #00c0f3;">
+                                    style="background-color: #00c0f3; border-color: #00c0f3; margin-left: 20%;">
                                     Registrar
                                 </button>
                             </div>
