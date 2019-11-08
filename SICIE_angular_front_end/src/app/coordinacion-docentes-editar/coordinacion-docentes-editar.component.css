@@ -8,7 +8,7 @@
     size: 100%;
     font-size: 24px;
     font-weight: bold;
-   font-size: 100%;
+    font-size: 100%;
 }
 .title2{
     color: #00c0f3;
@@ -65,4 +65,16 @@ body{
 {
     margin-left: 0;
     margin-right: 0;
+}
+
+.card-header{
+    background-color:  #00c0f3;color: rgb(255, 255, 255) ;
+    font-weight: bold;
+}
+
+.btn-primary{
+
+    background-color: #00c0f3; border-color: #00c0f3;
+    margin-left: 20%;
+    color: #ffffff;
 }
