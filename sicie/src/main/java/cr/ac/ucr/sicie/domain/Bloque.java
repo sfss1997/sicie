@@ -17,5 +17,31 @@ public class Bloque {
         this.nombreDelBloque = nombreDelBloque;
     }
 
+    public List<Curso> getCursos() {
+        return cursos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+    public int getIdBloque() {
+        return IdBloque;
+    }
+
+    public void setIdBloque(int IdBloque) {
+        this.IdBloque = IdBloque;
+    }
+
+    public int getNombreDelBloque() {
+        return nombreDelBloque;
+    }
+
+    public void setNombreDelBloque(int nombreDelBloque) {
+        this.nombreDelBloque = nombreDelBloque;
+    }
+    
+    
+
     
 }

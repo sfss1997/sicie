@@ -27,9 +27,9 @@ public class ProgramaCursoBusiness {
         return programaCursoData.buscarProgramasCurso(version);
     }
     
-    public void insertarProgramaCurso(ProgramaCurso programaCurso){
+    public void insertarProgramaCurso(ProgramaCurso programaCurso, String siglaCurso){
         
-        programaCursoData.insertarProgramaCurso(programaCurso);
+        programaCursoData.insertarProgramaCurso(programaCurso, siglaCurso);
     }
     
     public void eliminarProgramaCurso(int version){

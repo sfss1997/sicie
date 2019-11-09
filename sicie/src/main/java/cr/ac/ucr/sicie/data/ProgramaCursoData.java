@@ -15,23 +15,28 @@ import java.util.List;
  */
 public class ProgramaCursoData {
  
-    public List<ProgramaCurso> listarProgramasCurso(){
-        
+    public List<ProgramaCurso> listarProgramasCurso(){   
         List<ProgramaCurso> programasCurso = new ArrayList<ProgramaCurso>();
+        String sqlScript = "SELECT * FROM programa_curso;";
+        
         return programasCurso;
     }
     
     public List<ProgramaCurso> buscarProgramasCurso(int version){
-        
         List<ProgramaCurso> programasCurso = new ArrayList<ProgramaCurso>();
+        String sqlScript = "SELECT * FROM programa_curso WHERE version="+version+";";
+                
         return programasCurso;
     }
     
-    public void insertarProgramaCurso(ProgramaCurso programaCurso){
-    
+    public void insertarProgramaCurso(ProgramaCurso programaCurso,String siglaCurso){
+        String sqlScript = "INSERT INTO programa_curso VALUES("
+                +programaCurso.getVersion()+","
+                +programaCurso.isVigente()+","
+                +siglaCurso+");";
     }
     
     public void eliminarProgramaCurso(int version){
-    
+        String sqlScript = "DELETE FROM programa_curso WHERE id="+version+";";
     }
 }
