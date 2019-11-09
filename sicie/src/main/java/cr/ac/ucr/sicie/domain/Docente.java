@@ -1,8 +1,9 @@
-package cr.ac.ucr.sicie.domain;
+package com.sitio.docentes.domain;
 
 import java.util.List;
 
 public class Docente {
+	
 	private int idDocente;
 	private String correoInstitucional;
 	private String nombre;
@@ -28,7 +29,7 @@ public class Docente {
 		this.activo = activo;
 	}
 	
-	public Docente(int idDocente,String correoInstitucional, String nombre, String apellidos, String gradoAcademico, boolean activo) {
+	public Docente(int idDocente, String correoInstitucional, String nombre, String apellidos, String gradoAcademico, boolean activo) {
 		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
 				gradoAcademico.equals("")) new RuntimeException("Las etiquetas viene vacías");
 		this.idDocente = idDocente;
@@ -39,8 +40,9 @@ public class Docente {
 		this.activo = activo;
 	}
 
-	
 
+	
+	
 	public int getIdDocente() {
 		return idDocente;
 	}
@@ -123,7 +125,6 @@ public class Docente {
 	public void setActivo(boolean activo) {
 		this.activo = activo;
 	}
-	
 	
 
 }

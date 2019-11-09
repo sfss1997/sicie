@@ -4,13 +4,13 @@
 
 </div>
 
-
 <div class="content">
 
+<label class="title2">Gestion del personal docente</label>
 
 <div class="example-header">
   <mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
   </mat-form-field>
 </div>
 
@@ -20,38 +20,43 @@
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> ID </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
     </ng-container>
 
     <!-- Progress Column -->
     <ng-container matColumnDef="progress">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Editar </mat-header-cell>
-      <mat-cell *matCellDef="let row"> 
-          <a  href="/docentes/editar" style="background-color:  #00c0f3;color: white;" mat-button >  {{row.progress}}% </a>
-        </mat-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black; font-size: 100%;"> Editar </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        
+          <a href="/docentes/editar">
+            <img width="20" alt="edit" src="assets/edit.png" />
+          </a>
+      </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Docente </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Docente </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="color">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Eliminar </mat-header-cell>
-      <mat-cell *matCellDef="let row"> 
-          <button style="background-color: red;color: white;;" mat-button >{{row.color}}</button>
-        </mat-cell>
+      <mat-header-cell *matHeaderCellDef style="background-color: #E6E6E6; color: black; font-size: 100%;"> Eliminar </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+          <a>
+            <img width="20" alt="edit" src="assets/delete.png" />
+          </a>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="estado">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-        <mat-cell *matCellDef="let row" [style.color]="row.color"> 
-           {{row.estado}}
-          </mat-cell>
-      </ng-container>
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let row" style="color: black">
+        {{row.estado}}
+      </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;">
@@ -59,18 +64,16 @@
   </mat-table>
 
   <mat-toolbar>
-      <mat-toolbar-row>
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]">
-     </mat-paginator>
-        <span class="example-spacer"></span>
-        <a href="/docentes/registrar" style="background-color:  #00c0f3;color: white; margin-left: 60%;" mat-button>Registrar</a>
-        
-    
-      </mat-toolbar-row>
-    </mat-toolbar>
+    <mat-toolbar-row>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25]" style="background-color: #F3F3F3; color: black;" >
+      </mat-paginator>
+      <a href="/docentes/registrar" style="background-color:  #00c0f3;color: white; margin-left: 50%;"
+        mat-button>Registrar</a>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
 </div>
 
-    
+
 
 </div>

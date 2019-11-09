@@ -1,8 +1,5 @@
 package com.sitio.docentes.data;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Iterator;
 
 import javax.sql.DataSource;
@@ -10,28 +7,24 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.sitio.docentes.domain.Docente;
 import com.sitio.docentes.domain.SedeORecinto;
+import com.sitio.docentes.domain.Topico;
 
 @Repository
-public class SedeORecintoData {
-	
+public class TopicoData {
+
 	@Autowired
 	private DataSource dataSource;
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	
-	
-	public Iterator<SedeORecinto> cargarRecinto(){
+	public Iterator<Topico> cargarTopicos(){
 		String selectMysql;
-		selectMysql = "select id_recinto, nombre_recinto from Recinto";
+		selectMysql = "select id_topico, topico from Topico_de_interes";
 		return jdbcTemplate
 				.query(selectMysql, new Object[] {  },
-						(rs, row) -> new SedeORecinto(rs.getInt("id_recinto"),rs.getString("nombre_recinto"))).iterator();
+						(rs, row) -> new Topico(rs.getInt("id_topico"),rs.getString("topico"))).iterator();
 	}
-
 }
