@@ -15,6 +15,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {HttpClientModule} from '@angular/common/http';
 import {CdkTableModule} from '@angular/cdk/table';
+import { recintoDataService } from './Services/data.service';
 
 import {
   MatAutocompleteModule,
@@ -122,7 +123,9 @@ import {
     MatSelectModule
 
   ],
-  providers: [],
+  providers: [
+    recintoDataService 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

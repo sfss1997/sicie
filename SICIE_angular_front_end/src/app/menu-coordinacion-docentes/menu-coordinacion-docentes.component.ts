@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { recintoDataService } from '../Services/data.service';
 
 
 @Component({
@@ -10,11 +11,15 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 export class MenuCoordinacionDocentesComponent  {
   displayedColumns = ['id', 'name', 'progress', 'color','estado'];
   dataSource: MatTableDataSource<UserData>;
+  message:string;
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
-  constructor() {
+  constructor(private recintoData: recintoDataService) {
+
+   
+  
     // Create 100 users
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
@@ -28,6 +33,8 @@ export class MenuCoordinacionDocentesComponent  {
    * be able to query its view for the initialized paginator and sort.
    */
   ngAfterViewInit() {
+    this.recintoData.recinto.subscribe(recinto=> this.message = recinto);
+
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -52,6 +59,10 @@ function createNewUser(id: number): UserData {
     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
     estado:'activo'
   };
+
+
+  
+
 }
 
 /** Constants used to fill up our data base. */
