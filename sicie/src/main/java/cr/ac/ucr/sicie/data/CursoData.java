@@ -35,6 +35,7 @@ public class CursoData {
     @Autowired
     private DataSource dataSource;
     
+    @Transactional
     public Iterator<Curso> listarCursos(){
         
         String selectMysql;
@@ -45,6 +46,7 @@ public class CursoData {
                                                                  
     }
     
+    @Transactional
     public List<Curso> buscarCursos(String sigla){
         List<Curso> cursos = new ArrayList<Curso>();
         String sqlScript = "SELECT * FROM curso WHERE sigla="+sigla+";";
@@ -52,6 +54,7 @@ public class CursoData {
         return cursos;
     }
     
+    @Transactional
     public void insertarCurso(Curso curso){
         Connection connection = null;
         try {
@@ -89,6 +92,7 @@ public class CursoData {
         }
     }
      
+    @Transactional
     public void eliminarCurso(String sigla){
         Connection connection = null;
         try {
@@ -121,13 +125,14 @@ public class CursoData {
         }
     }
 
+    @Transactional
     public void actualizarCurso(Curso curso) {
         Connection connection = null;
         try {
 		connection = dataSource.getConnection();
 		connection.setAutoCommit(false);
                 
-                String sqlInsert = "UPDATE curso nombre=?,nivel=?,creditos=?,plan_estudio_codigo=?,optativa=? WHERE sigla=?;";
+                String sqlInsert = "UPDATE curso SET nombre=?,nivel=?,creditos=?,plan_estudio_codigo=?,optativa=? WHERE sigla=?;";
                 PreparedStatement stmt = connection.prepareStatement(sqlInsert);
 			
 			stmt.setString(1, curso.getNombre());

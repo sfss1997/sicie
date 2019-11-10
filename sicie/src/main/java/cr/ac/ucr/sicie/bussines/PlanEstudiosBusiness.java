@@ -7,6 +7,7 @@ package cr.ac.ucr.sicie.bussines;
 
 import cr.ac.ucr.sicie.data.PlanEstudiosData;
 import cr.ac.ucr.sicie.domain.PlanEstudios;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -17,18 +18,17 @@ public class PlanEstudiosBusiness {
     
     private PlanEstudiosData planesEstudiosData;
     
-    public List<PlanEstudios> listarPlanesEstudios(){
+    public Iterator<PlanEstudios> listarPlanesEstudios(){
         
         return planesEstudiosData.listarPlanesEstudios();
     }
     
-    public List<PlanEstudios> buscarPlanesEstudios(String codigo){
-        
-        return planesEstudiosData.buscarPlanesEstudios(codigo);
-    }
+//    public List<PlanEstudios> buscarPlanesEstudios(String codigo){
+//        
+//        return planesEstudiosData.buscarPlanesEstudios(codigo);
+//    }
     
     public void insertarPlanEstudios(PlanEstudios planEstudios){
-    
         
         planesEstudiosData.insertarPlanEstudios(planEstudios);
     }
@@ -38,4 +38,8 @@ public class PlanEstudiosBusiness {
         planesEstudiosData.eliminarPlanEstudios(codigo);
     }
     
+    public void actualizarPlanEstudios(PlanEstudios planEstudios){
+        
+        planesEstudiosData.actualizarPlanEstudios(planEstudios);
+    }
 }

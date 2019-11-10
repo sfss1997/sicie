@@ -16,6 +16,13 @@ public class PlanEstudios {
     public PlanEstudios() {
     }
 
+    public PlanEstudios(String codigo, String nombreCarrera, int anoResolucion, boolean vigente) {
+        this.codigo = codigo;
+        this.nombreCarrera = nombreCarrera;
+        this.anoResolucion = anoResolucion;
+        this.vigente = vigente;
+    }
+
     public PlanEstudios(List<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, File documentoFundamentacionCarrera, boolean vigente, File resolucionDeCreacionDeCarrera) {
         this.cursos = cursos;
         this.codigo = codigo;
