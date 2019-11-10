@@ -7,14 +7,15 @@ public class ProgramaCurso {
     private int version;
     private boolean vigente;
     private File programaCursoBase;
+    private String siglaCurso;
 
     public ProgramaCurso() {
     }
 
-    public ProgramaCurso(int version, boolean vigente, File programaCursoBase) {
+    public ProgramaCurso(int version, boolean vigente, String siglaCurso) {
         this.version = version;
         this.vigente = vigente;
-        this.programaCursoBase = programaCursoBase;
+        this.siglaCurso = siglaCurso;
     }
 
     public int getVersion() {
@@ -40,7 +41,15 @@ public class ProgramaCurso {
     public void setProgramaCursoBase(File programaCursoBase) {
         this.programaCursoBase = programaCursoBase;
     }
-        
+
+    public String getSiglaCurso() {
+        return siglaCurso;
+    }
+
+    public void setSiglaCurso(String siglaCurso) {
+        this.siglaCurso = siglaCurso;
+    }
+
     
 
 }

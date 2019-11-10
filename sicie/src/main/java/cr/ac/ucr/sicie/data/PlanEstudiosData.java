@@ -165,18 +165,17 @@ public class PlanEstudiosData {
 }
 
 class PlanEstudiosExtractor implements ResultSetExtractor<PlanEstudios> {
-	@Override
-	public PlanEstudios extractData(ResultSet rs) throws SQLException, DataAccessException {
-		
-		rs.next();
-                
-                String codigo = rs.getString("codigo");
-                String nombreCarrera = rs.getString("nombre_carrera");
-                int anoResolucion = rs.getInt("ano_resolucion");
-                boolean vigente = rs.getBoolean("vigente");
-               
-		return new PlanEstudios(codigo, nombreCarrera, anoResolucion, vigente);
-	}
 
-    
+    @Override
+    public PlanEstudios extractData(ResultSet rs) throws SQLException, DataAccessException {
+
+        rs.next();
+
+        String codigo = rs.getString("codigo");
+        String nombreCarrera = rs.getString("nombre_carrera");
+        int anoResolucion = rs.getInt("ano_resolucion");
+        boolean vigente = rs.getBoolean("vigente");
+
+        return new PlanEstudios(codigo, nombreCarrera, anoResolucion, vigente);
+    }
 }
