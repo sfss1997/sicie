@@ -33,6 +33,11 @@ public class CursoBusiness {
         cursoData.insertarCurso(curso);
     }
     
+    public void actualizarCurso(Curso curso){
+        
+        cursoData.actualizarCurso(curso);
+    }
+    
     public void eliminarCurso(String sigla){
     
         cursoData.eliminarCurso(sigla);

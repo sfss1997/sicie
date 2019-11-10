@@ -9,27 +9,37 @@ public class Curso {
     private List<Curso> cursosCorrequisitos;
     private List<Enfasis> enfasis;
     private List<ProgramaCurso> programas;
-    private PlanEstudios planDeEstudio;
+    private String planDeEstudios;
     private String sigla;
     private String nombre;
     private int creditos;
     private int nivel;
-    private boolean optativa = false;
+    private boolean optativa;
 
     public Curso() {
     }
 
-    public Curso(Bloque bloque, List<Curso> cursosRequisitos, List<Curso> cursosCorrequisitos, List<Enfasis> enfasis, List<ProgramaCurso> programas, PlanEstudios planDeEstudio, String sigla, String nombre, int creditos, int nivel) {
+    public Curso( String sigla, String nombre, int nivel, int creditos,  String planDeEstudios, boolean optativa) {
+        this.planDeEstudios = planDeEstudios;
+        this.sigla = sigla;
+        this.nombre = nombre;
+        this.creditos = creditos;
+        this.nivel = nivel;
+        this.optativa = optativa;
+    }
+    
+    public Curso(Bloque bloque, List<Curso> cursosRequisitos, List<Curso> cursosCorrequisitos, List<Enfasis> enfasis, List<ProgramaCurso> programas, String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
         this.bloque = bloque;
         this.cursosRequisitos = cursosRequisitos;
         this.cursosCorrequisitos = cursosCorrequisitos;
         this.enfasis = enfasis;
         this.programas = programas;
-        this.planDeEstudio = planDeEstudio;
+        this.planDeEstudios = planDeEstudios;
         this.sigla = sigla;
         this.nombre = nombre;
         this.creditos = creditos;
         this.nivel = nivel;
+        this.optativa = optativa;
     }
 
     public Bloque getBloque() {
@@ -72,12 +82,12 @@ public class Curso {
         this.programas = programas;
     }
 
-    public PlanEstudios getPlanDeEstudio() {
-        return planDeEstudio;
+    public String getPlanDeEstudios() {
+        return planDeEstudios;
     }
 
-    public void setPlanDeEstudio(PlanEstudios planDeEstudio) {
-        this.planDeEstudio = planDeEstudio;
+    public void setPlanDeEstudios(String planDeEstudios) {
+        this.planDeEstudios = planDeEstudios;
     }
 
     public String getSigla() {
@@ -120,6 +130,7 @@ public class Curso {
         this.optativa = optativa;
     }
 
+    
     
         
     
