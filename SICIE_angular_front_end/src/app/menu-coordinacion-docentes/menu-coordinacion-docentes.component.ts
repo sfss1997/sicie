@@ -1,26 +1,41 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-
+import { DocentesService } from '../model/docentes.service';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Docente } from '../model/docente';
 
 @Component({
   selector: 'app-menu-coordinacion-docentes',
   templateUrl: './menu-coordinacion-docentes.component.html',
   styleUrls: ['./menu-coordinacion-docentes.component.css']
 })
-export class MenuCoordinacionDocentesComponent  {
-  displayedColumns = ['id', 'name', 'progress', 'color','estado'];
+export class MenuCoordinacionDocentesComponent implements OnInit {
+  displayedColumns = ['id', 'name', 'editar', 'eliminar','estado'];
   dataSource: MatTableDataSource<UserData>;
+  private docentes: Docente[] = new Array<Docente>();
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
-  constructor() {
+  constructor(private docenteService: DocentesService) {
     // Create 100 users
     const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
+    this.docenteService.getAll().subscribe(data => this.docentes=data);
+    //for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    //this.dataSource = new MatTableDataSource(users);
+  }
+
+  getAll():Docente[]{
+    return this.docentes;
+  }
+  ngOnInit() {
+  }
+
+  onSubmit(){
+    
   }
 
   /**
