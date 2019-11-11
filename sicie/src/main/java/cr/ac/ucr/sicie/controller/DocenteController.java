@@ -1,4 +1,4 @@
-package com.sitio.docentes.controller;
+package cr.ac.ucr.sicie.controller;
 
 
 import java.sql.SQLException;
@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sitio.docentes.business.DocenteBusiness;
-import com.sitio.docentes.domain.Docente;
+import cr.ac.ucr.sicie.bussines.DocenteBusiness;
+import cr.ac.ucr.sicie.domain.Docente;
+
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

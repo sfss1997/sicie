@@ -1,13 +1,12 @@
-package com.sitio.docentes.business;
+package cr.ac.ucr.sicie.bussines;
 
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sitio.docentes.data.SedeORecintoData;
-import com.sitio.docentes.domain.Docente;
-import com.sitio.docentes.domain.SedeORecinto;
+import cr.ac.ucr.sicie.data.SedeORecintoData;
+import cr.ac.ucr.sicie.domain.SedeORecinto;
 
 @Service
 public class SedeORecintoBusiness {

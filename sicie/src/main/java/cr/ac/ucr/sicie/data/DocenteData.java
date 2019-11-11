@@ -1,4 +1,4 @@
-package com.sitio.docentes.data;
+package cr.ac.ucr.sicie.data;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,10 +15,10 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sitio.docentes.domain.Docente;
-import com.sitio.docentes.domain.Especializacion;
-import com.sitio.docentes.domain.SedeORecinto;
-import com.sitio.docentes.domain.Topico;
+import cr.ac.ucr.sicie.domain.Docente;
+import cr.ac.ucr.sicie.domain.Especializacion;
+import cr.ac.ucr.sicie.domain.SedeORecinto;
+import cr.ac.ucr.sicie.domain.Topico;
 
 @Repository
 public class DocenteData {

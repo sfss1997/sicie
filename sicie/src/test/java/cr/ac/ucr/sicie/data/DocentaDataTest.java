@@ -34,7 +34,7 @@ public class DocentaDataTest {
 		docenteData = new DocenteData();
 		//Iterator<Docente> listaDocentes = docenteData.cargarDocentes();
 		
-		docenteData.guardarDocente(docente, 1);
+		docenteData.guardarDocente(docente, "Recinto de Paraíso");
 		
 		
 		assertNotNull(docente);

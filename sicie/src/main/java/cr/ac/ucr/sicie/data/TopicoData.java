@@ -1,4 +1,4 @@
-package com.sitio.docentes.data;
+package cr.ac.ucr.sicie.data;
 
 import java.util.Iterator;
 
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.sitio.docentes.domain.SedeORecinto;
-import com.sitio.docentes.domain.Topico;
+import cr.ac.ucr.sicie.domain.Topico;
+
 
 @Repository
 public class TopicoData {

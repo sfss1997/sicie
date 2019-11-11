@@ -1,20 +1,19 @@
-package com.sitio.docentes.business;
+package cr.ac.ucr.sicie.bussines;
 
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sitio.docentes.data.TopicoData;
-import com.sitio.docentes.domain.SedeORecinto;
-import com.sitio.docentes.domain.Topico;
+import cr.ac.ucr.sicie.data.TopicoData;
+
 
 @Service
 public class TopicoBusiness {
 	@Autowired
 	private TopicoData topicoData;
 	
-	public Iterator<Topico> cargarTopicos(){
+	public Iterator<cr.ac.ucr.sicie.domain.Topico> cargarTopicos(){
 		return topicoData.cargarTopicos();
 	}
 }
