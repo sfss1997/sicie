@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class recintoDataService {
-  public recinto = new BehaviorSubject<string>('');
+  public recinto = new BehaviorSubject<string>('*');
   
 
   constructor() { }
