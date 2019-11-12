@@ -2,9 +2,9 @@ package cr.ac.ucr.sicie.data;
 
 import java.sql.*;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
+import java.util.List;
+import java.util.LinkedList;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -279,12 +279,12 @@ public class DocenteData {
 		}
 	}
 	
-	public Iterator<Docente> cargarDocentes(){
+	public List<Docente> cargarDocentes(){
 		String selectMysql;
 		selectMysql = "select id_docente, correo_institucional, nombre,apellidos, grado_academico,activo from Docente";
 		return jdbcTemplate
 				.query(selectMysql, new Object[] {  },
-						(rs, row) -> new Docente(rs.getInt("id_docente"),rs.getString("correo_institucional"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("grado_academico"),rs.getBoolean("activo"))).iterator();
+						(rs, row) -> new Docente(rs.getInt("id_docente"),rs.getString("correo_institucional"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("grado_academico"),rs.getBoolean("activo")));
 	}
 	
 

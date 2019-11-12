@@ -37,7 +37,7 @@ public class DocenteBusiness {
 		docenteData.borrarDocente(idDocente);
 	}
 	
-	public Iterator<Docente> cargarDocentes(){
+	public List<Docente> cargarDocentes(){
 		return docenteData.cargarDocentes();
 	}
 

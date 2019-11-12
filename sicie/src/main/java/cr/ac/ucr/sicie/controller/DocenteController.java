@@ -3,6 +3,7 @@ package cr.ac.ucr.sicie.controller;
 
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,10 +40,10 @@ public class DocenteController {
 		
 	}
 	
-	@GetMapping
-	public Iterator<Docente> cargarDocentes(){
-		Iterator<Docente> docentes = docenteBusiness.cargarDocentes();
-		return docentes;
+	@GetMapping("/listaDocentes")
+	public ResponseEntity<List<Docente>> cargarDocentes(){
+		List<Docente> docentes = docenteBusiness.cargarDocentes();
+		return new ResponseEntity<List<Docente>>(docentes, HttpStatus.OK);
 	}
 	
 	
