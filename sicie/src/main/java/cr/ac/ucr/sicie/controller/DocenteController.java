@@ -39,10 +39,10 @@ public class DocenteController {
 		
 	}
 	
-	@GetMapping
-	public Iterator<Docente> cargarDocentes(){
+	@GetMapping("/listaDocentes")
+	public ResponseEntity<Iterator<Docente>> cargarDocentes(){
 		Iterator<Docente> docentes = docenteBusiness.cargarDocentes();
-		return docentes;
+		return new ResponseEntity<Iterator<Docente>>(docentes, HttpStatus.OK);
 	}
 	
 	
