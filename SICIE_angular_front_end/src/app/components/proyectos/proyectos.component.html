@@ -1,4 +1,9 @@
+<app-navbar-coordinacion></app-navbar-coordinacion>
+
 <div class="container">
+    <div style=" align-self:  center; width: 100%;  margin-top: 2%; ">
+        <h4>Buscar Proyectos de Investigacion</h4>
+    </div>
     <form>
         <div class="form-group row">
             <label for="nombreRecinto" class="col-sm-2 col-form-label">Recinto</label>
@@ -26,7 +31,9 @@
         </div>
     </form>
 
-    <button type="button" class="btn btn-success" (click)="addNuevo()">Agregar Nuevo</button>
+    <div style=" align-self:  center; width: 100%;  margin-bottom: 1%; margin-top: 2%;" >
+        <button type="button" class="btn btn-success" (click)="addNuevo()">Agregar Nuevo</button>
+    </div>
     <table class="table table-hover table-sm">
         <thead class="thead-light">
             <tr>

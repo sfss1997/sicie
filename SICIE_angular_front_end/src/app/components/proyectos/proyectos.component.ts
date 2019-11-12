@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectoInvestigacion } from 'src/app/models/ProyectoInvestigacion';
-import { Hito3Service } from '../../services/hito3.service';
+import { recintoDataService } from '../../Services/data.service';
 import { Recinto } from 'src/app/models/Recinto';
 import { Router } from '@angular/router';
 
@@ -18,7 +18,7 @@ export class ProyectosComponent implements OnInit {
   nombreProyecto:string;
   nombreDocente:string;
 
-  constructor(private service:Hito3Service, private router: Router) {
+  constructor(private service:recintoDataService, private router: Router) {
   }
 
   ngOnInit() {

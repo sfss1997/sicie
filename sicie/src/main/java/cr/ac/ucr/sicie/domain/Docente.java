@@ -16,9 +16,9 @@ public class Docente {
 	
 	public Docente(int idDocente,String correoInstitucional, String nombre, String apellidos, String gradoAcademico,
 			List<String> topicosDeInteres, List<String> especializacion, boolean activo) {
-		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
-				gradoAcademico.equals("") || topicosDeInteres.equals("")) new RuntimeException("Las etiquetas viene vacías");
-		if (especializacion.isEmpty()) new RuntimeException("La lista especialización viene vacía");
+//		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
+//				gradoAcademico.equals("") || topicosDeInteres.equals("")) new RuntimeException("Las etiquetas viene vacías");
+//		if (especializacion.isEmpty()) new RuntimeException("La lista especialización viene vacía");
 		this.idDocente = idDocente;
 		this.correoInstitucional = correoInstitucional;
 		this.nombre = nombre;
@@ -30,8 +30,8 @@ public class Docente {
 	}
 	
 	public Docente(int idDocente, String correoInstitucional, String nombre, String apellidos, String gradoAcademico, boolean activo) {
-		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
-				gradoAcademico.equals("")) new RuntimeException("Las etiquetas viene vacías");
+//		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
+//				gradoAcademico.equals("")) new RuntimeException("Las etiquetas viene vacías");
 		this.idDocente = idDocente;
 		this.correoInstitucional = correoInstitucional;
 		this.nombre = nombre;
@@ -57,7 +57,7 @@ public class Docente {
 
 
 	public void setCorreoInstitucional(String correoInstitucional) {
-		if (correoInstitucional.equals("")) new RuntimeException("Las etiquetas viene vacías");
+//		if (correoInstitucional.equals("")) new RuntimeException("Las etiquetas viene vacías");
 		this.correoInstitucional = correoInstitucional;
 	}
 
@@ -68,7 +68,7 @@ public class Docente {
 
 
 	public void setNombre(String nombre) {
-		if (nombre.equals("")) new RuntimeException("Las etiquetas viene vacías");
+//		if (nombre.equals("")) new RuntimeException("Las etiquetas viene vacías");
 		this.nombre = nombre;
 	}
 
@@ -79,7 +79,7 @@ public class Docente {
 
 
 	public void setApellidos(String apellidos) {
-		if (apellidos.equals("") ) new RuntimeException("Las etiquetas viene vacías");
+//		if (apellidos.equals("") ) new RuntimeException("Las etiquetas viene vacías");
 		this.apellidos = apellidos;
 	}
 
@@ -90,7 +90,7 @@ public class Docente {
 
 
 	public void setGradoAcademico(String gradoAcademico) {
-		if (gradoAcademico.equals("")) new RuntimeException("Las etiquetas viene vacías");
+//		if (gradoAcademico.equals("")) new RuntimeException("Las etiquetas viene vacías");
 		this.gradoAcademico = gradoAcademico;
 	}
 
@@ -101,7 +101,7 @@ public class Docente {
 
 
 	public void setTopicosDeInteres(List<String> topicosDeInteres) {
-		if (topicosDeInteres.isEmpty()) new RuntimeException("Las etiquetas viene vacías");
+//		if (topicosDeInteres.isEmpty()) new RuntimeException("Las etiquetas viene vacías");
 		this.topicosDeInteres = topicosDeInteres;
 	}
 
@@ -112,7 +112,7 @@ public class Docente {
 
 
 	public void setEspecializacion(List<String> especializacion) {
-		if (especializacion.isEmpty()) new RuntimeException("La lista especialización viene vacía");
+//		if (especializacion.isEmpty()) new RuntimeException("La lista especialización viene vacía");
 		this.especializacion = especializacion;
 	}
 

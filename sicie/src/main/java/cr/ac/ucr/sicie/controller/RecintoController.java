@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/recinto")
+@RequestMapping(value = "/api/recinto")
 public class RecintoController {
 
     private SedeORecintoBusiness recintoBusiness;

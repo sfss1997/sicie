@@ -7,6 +7,8 @@ import { NavbarGeneralComponent } from './navbar-general/navbar-general.componen
 import { MenuCoordinacionDocentesComponent } from './menu-coordinacion-docentes/menu-coordinacion-docentes.component';
 import { CoordinacionDocentesEditarComponent } from './coordinacion-docentes-editar/coordinacion-docentes-editar.component';
 import { CoordinacionDocentesRegistrarComponent } from './coordinacion-docentes-registrar/coordinacion-docentes-registrar.component';
+import { ProyectoFormComponent } from './components/proyecto-form/proyecto-form.component';
+import { ProyectosComponent } from './components/proyectos/proyectos.component';
 
 
 
@@ -18,8 +20,9 @@ const routes: Routes = [
   {path: '' , component:  NavbarGeneralComponent},
   {path: 'docentes', component: MenuCoordinacionDocentesComponent},
   {path: 'docentes/editar', component: CoordinacionDocentesEditarComponent},
-  {path: 'docentes/registrar', component: CoordinacionDocentesRegistrarComponent}
-
+  {path: 'docentes/registrar', component: CoordinacionDocentesRegistrarComponent},
+  {path: 'addProyecto', component:ProyectoFormComponent},
+  {path: 'listaProyectos', component:ProyectosComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

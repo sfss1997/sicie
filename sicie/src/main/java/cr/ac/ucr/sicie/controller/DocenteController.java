@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.List;
 
+import cr.ac.ucr.sicie.domain.TipoParticipacionInterna;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,7 +23,7 @@ import cr.ac.ucr.sicie.bussines.DocenteBusiness;
 import cr.ac.ucr.sicie.domain.Docente;
 
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/docente")
 public class DocenteController {
@@ -62,5 +63,11 @@ public class DocenteController {
 		docenteBusiness.borrarDocente(idDocente);
 		return new ResponseEntity<Docente>(HttpStatus.NO_CONTENT);
 	  
+	}
+
+	@GetMapping(path = "/participaciones")
+	public ResponseEntity<List<TipoParticipacionInterna>> getAllParticipaciones () {
+		List<TipoParticipacionInterna> participaciones = docenteBusiness.getAllParticipaciones();
+		return new ResponseEntity<List<TipoParticipacionInterna>>(participaciones, HttpStatus.OK);
 	}
 }

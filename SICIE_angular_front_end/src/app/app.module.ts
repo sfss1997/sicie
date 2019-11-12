@@ -18,6 +18,13 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { recintoDataService } from './Services/data.service';
 import { DocentesService } from './model/docentes.service';
 
+import { ProyectosComponent } from './components/proyectos/proyectos.component';
+import { ProyectoItemComponent } from './components/proyecto-item/proyecto-item.component';
+import { ProyectoFormComponent } from './components/proyecto-form/proyecto-form.component';
+import { DocenteItemTableComponent } from './components/docente-item-table/docente-item-table.component';
+import { ParticipanteItemTableComponent } from './components/participante-item-table/participante-item-table.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -65,7 +72,12 @@ import {
     CoordinacionDocentesEditarComponent,
     CoordinacionDocentesRegistrarComponent,
     NavbarGeneralComponent,
-    NavbarCoordinacionComponent
+    NavbarCoordinacionComponent,
+    ProyectosComponent,
+    ProyectoItemComponent,
+    ProyectoFormComponent,
+    DocenteItemTableComponent,
+    ParticipanteItemTableComponent,
   ],
   exports: [
     CdkTableModule,
@@ -121,7 +133,8 @@ import {
     MatSortModule,
     MatToolbarModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    NgbModule
 
   ],
   providers: [

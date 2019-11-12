@@ -16,8 +16,9 @@ import { TipoParticipacionExterna } from '../models/TipoParticipacionExterna';
 export class recintoDataService {
   public recinto = new BehaviorSubject<string>('*');
   
+  proyectoUrl:string = 'http://localhost:8080/docentes/api/';
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   editRecinto(newRecinto){
     this.recinto.next(newRecinto);
@@ -40,12 +41,12 @@ export class recintoDataService {
   }
 
   getAllDocentes(): Observable<Docente[]> {
-    const url:string = this.proyectoUrl + "docente/";
+    const url:string = this.proyectoUrl + "docente/listaDocentes";
     return this.http.get<Docente[]>(url);
   }
 
   getAllParticipantesExternos(): Observable<ParticipanteExterno[]> {
-    const url:string = this.proyectoUrl + "participanteExterno/";
+    const url:string = this.proyectoUrl + "participanteExterno";
     return this.http.get<ParticipanteExterno[]>(url);
   }
 

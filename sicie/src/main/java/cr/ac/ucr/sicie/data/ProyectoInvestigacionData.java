@@ -124,6 +124,7 @@ public class ProyectoInvestigacionData {
             cstmt.execute();
 
             int idProyecto = cstmt.getInt("id_proyecto");
+            proyectoInvestigacion.setIdProyectoInvestigacion(idProyecto);
 
             sqlStoredProcedure = "{call save_participaciones_internas(?, ?, ?)}";
             cstmt = conn.prepareCall(sqlStoredProcedure);
