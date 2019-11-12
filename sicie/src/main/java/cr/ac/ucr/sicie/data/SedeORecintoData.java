@@ -38,19 +38,19 @@ public class SedeORecintoData {
 	}
 
 	public SedeORecinto getRecintoById(int idRecinto) {
-		String sqlSelect = "SELECT id_recinto, nombre" +
+		String sqlSelect = "SELECT id_recinto, nombre_recinto" +
 				" FROM Recinto" +
 				" WHERE id_recinto = ?;";
 		return (SedeORecinto) jdbcTemplate.queryForObject(sqlSelect, new Object[]{idRecinto}, (rs , row) ->
-				new SedeORecinto(idRecinto, rs.getString("nombre")));
+				new SedeORecinto(idRecinto, rs.getString("nombre_recinto")));
 	}
 
 	public List<SedeORecinto> getAllRecintos() {
-		String sqlSelect = "SELECT id_recinto, nombre" +
+		String sqlSelect = "SELECT id_recinto, nombre_recinto" +
 				" FROM Recinto;";
 		List<SedeORecinto> recintos = new LinkedList<>(jdbcTemplate.query(sqlSelect, new Object[]{}, (rs, row) ->
 				new SedeORecinto(rs.getInt("id_recinto"),
-						rs.getString("nombre"))));
+						rs.getString("nombre_recinto"))));
 		return recintos;
 	}
 

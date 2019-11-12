@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/participanteExterno")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "/api/participanteExterno")
 public class ParticipanteExternoController {
 
     @Autowired
     ParticipanteExternoBusiness participanteExternoBusiness;
 
-    @GetMapping(path = "/")
+    @GetMapping(path = "")
     public ResponseEntity<List<ParticipanteExterno>> getAllParticipantesExternos() {
         List<ParticipanteExterno> participantesExternos = participanteExternoBusiness.getAllParticipantesExternos();
         return new ResponseEntity<List<ParticipanteExterno>>(participantesExternos, HttpStatus.OK);

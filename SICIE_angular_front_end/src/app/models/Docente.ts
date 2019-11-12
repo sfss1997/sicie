@@ -4,5 +4,7 @@ export class Docente {
         public apellidos: String = "", 
         public gradoAcademico: String = "", 
         public activo: boolean = false, 
-        public correoInstitucional: String = "") {}
+        public correoInstitucional: String = "",
+        public topicosDeInteres: String[] = [""],
+        public especializacion: String[] = [""]) {}
 }

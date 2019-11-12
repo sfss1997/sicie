@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Docente } from 'src/app/models/Docente';
 import { TipoParticipacionInterna } from 'src/app/models/TipoParticipacionInterna';
-import { Hito3Service } from '../../services/hito3.service';
+import { recintoDataService } from '../../Services/data.service';
 
 @Component({
   selector: '[app-docente-item-table], app-docente-item-table', 
@@ -17,7 +17,7 @@ export class DocenteItemTableComponent implements OnInit {
   participaciones:TipoParticipacionInterna[]; // almacena los datos provenientes de la base de datos
   isChecked:boolean; // para controlar si un docente fue seleccionado en la tabla
 
-  constructor(private service:Hito3Service) {}
+  constructor(private service:recintoDataService) {}
 
   ngOnInit() {
     this.columnas = ['nombre','apellidos','correoInstitucional','activo'];

@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(value = "/proyectoInvestigacion")
+@RequestMapping(value = "/api/proyectoInvestigacion")
 public class ProyectoInvestigacionController {
 
 
@@ -22,7 +22,7 @@ public class ProyectoInvestigacionController {
         this.proyectoInvestigacionBusiness = proyectoInvestigacionBusiness;
     }
 
-    @GetMapping(path = "/")
+    @GetMapping(path = "")
     public ResponseEntity<List<ProyectoInvestigacion>> getAllProyectosInvestigacion() {
         List<ProyectoInvestigacion> proyectosInvestigacion = proyectoInvestigacionBusiness.getAllProyectosInvestigacion();
         return new ResponseEntity<>(proyectosInvestigacion, HttpStatus.OK);

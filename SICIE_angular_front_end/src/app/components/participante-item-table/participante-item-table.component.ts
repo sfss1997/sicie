@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { ParticipanteExterno } from 'src/app/models/ParticipanteExterno';
 import { TipoParticipacionExterna } from 'src/app/models/TipoParticipacionExterna';
-import { Hito3Service } from '../../services/hito3.service';
+import { recintoDataService } from '../../Services/data.service';
 
 @Component({
   selector: '[app-participante-item-table]',
@@ -18,7 +18,7 @@ export class ParticipanteItemTableComponent implements OnInit {
   columnas:string[];
   isChecked: boolean;
 
-  constructor(private service:Hito3Service) { }
+  constructor(private service:recintoDataService) { }
 
   ngOnInit() {
     this.tipoParticipacionExterna = new TipoParticipacionExterna();

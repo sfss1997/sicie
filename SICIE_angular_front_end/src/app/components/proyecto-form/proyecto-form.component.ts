@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProyectoInvestigacion } from 'src/app/models/ProyectoInvestigacion';
 import { Recinto } from 'src/app/models/Recinto';
-import { Hito3Service } from '../../services/hito3.service';
+import { recintoDataService } from '../../Services/data.service';
 import { Docente } from 'src/app/models/Docente';
 import { ParticipanteExterno } from 'src/app/models/ParticipanteExterno';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -24,10 +24,11 @@ export class ProyectoFormComponent implements OnInit {
   participacionesInternas:TipoParticipacionInterna[]; 
   participacionesExternas:TipoParticipacionExterna[];
   docente:Docente; // fuerza bruta ᕦ(ò_ó)ᕤ
+  mensaje: string;
 
   closeResult: string;
 
-  constructor(private service:Hito3Service, private modalService: NgbModal) { }
+  constructor(private service:recintoDataService, private modalService: NgbModal) { }
 
   ngOnInit() {
 
@@ -38,6 +39,7 @@ export class ProyectoFormComponent implements OnInit {
     this.proyectoInvestigacion = new ProyectoInvestigacion();
     this.participacionesInternas = [];
     this.participacionesExternas = [];
+    this.mensaje = "";
 
     // subscripcion de servicios
     this.service.getAllRecintos().subscribe(recintos => {
@@ -56,6 +58,10 @@ export class ProyectoFormComponent implements OnInit {
 
   openXl(content) { 
     this.modalService.open(content, {size: 'xl'}); 
+  }
+
+  open(content) {
+    this.modalService.open(content, {size: "lg"});
   }
 
   // seleccionar las participaciones de la tabla de participaciones (docente)
@@ -115,6 +121,14 @@ export class ProyectoFormComponent implements OnInit {
     this.service.saveProyecto(nuevoProyecto).subscribe(proyecto => {
       this.proyectoInvestigacion = proyecto;
     });
+  }
+
+  confirmation(id: number) { 
+    if(id != 0) {
+      this.mensaje = "El proyecto se guardo satisfactoriamente";
+    } else  {
+      this.mensaje = "Hubo un error, por favor intentelo de nuevo";
+    }
   }
 
 }
