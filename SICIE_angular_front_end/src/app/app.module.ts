@@ -16,6 +16,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {HttpClientModule} from '@angular/common/http';
 import {CdkTableModule} from '@angular/cdk/table';
 import { recintoDataService } from './Services/data.service';
+import { DocentesService } from './model/docentes.service';
 
 import {
   MatAutocompleteModule,
@@ -124,9 +125,11 @@ import {
 
   ],
   providers: [
-    recintoDataService 
+    recintoDataService,
+    DocentesService 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
 platformBrowserDynamic().bootstrapModule(AppModule);
