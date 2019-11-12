@@ -1,12 +1,10 @@
 package cr.ac.ucr.sicie.data;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Iterator;
-import java.util.List;
 
+import java.util.List;
+import java.util.LinkedList;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,60 @@ public class DocenteData {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private DataSource dataSource;
-	
+
+	public List<Docente> getAllDocentes() {
+		String sqlSelect = "SELECT id_docente, nombre, apellidos, grado_academico, activo, correo_institucional" +
+				" FROM Docente;";
+		List<Docente> docentes = new LinkedList<>(jdbcTemplate.query(sqlSelect, new Object[]{}, (rs, row) ->
+				new Docente(rs.getInt("id_docente"),
+						rs.getString("correo_institucional"),
+						rs.getString("nombre"),
+						rs.getString("apellidos"),
+						rs.getString("grado_academico"),
+						null,
+						null,
+						rs.getBoolean("activo"))));
+		return docentes;
+	}
+
+	public Docente getDocenteById(int idDocente) {
+		CallableStatement cstmt = null;
+		Docente docente = null;
+
+		String sqlStoredProcedure = "{call get_docente_by_id(?, ?, ?, ?, ?, ?)}";
+
+		try (Connection conn = dataSource.getConnection()) {
+			cstmt = conn.prepareCall(sqlStoredProcedure);
+
+			cstmt.setInt(1, idDocente);
+			cstmt.registerOutParameter(2, Types.VARCHAR);
+			cstmt.registerOutParameter(3, Types.VARCHAR);
+			cstmt.registerOutParameter(4, Types.VARCHAR);
+			cstmt.registerOutParameter(5, Types.TINYINT);
+			cstmt.registerOutParameter(6, Types.VARCHAR);
+
+			cstmt.execute();
+
+			docente = new Docente();
+			docente.setNombre(cstmt.getString(2));
+			docente.setApellidos(cstmt.getString(3));
+			docente.setGradoAcademico(cstmt.getString(4));
+			docente.setActivo(cstmt.getBoolean(5));
+			docente.setCorreoInstitucional(cstmt.getString(6));
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if(cstmt != null) {
+				try {
+					cstmt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return docente;
+	}
 	
 	public void guardarDocente(Docente docente, String nombreRecinto) {
 		Connection connection = null;
