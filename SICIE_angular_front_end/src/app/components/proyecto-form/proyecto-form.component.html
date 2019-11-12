@@ -1,0 +1,150 @@
+<!-- <app-docente-item-table [docente]="docente" hidden="true" (sendDocenteData)="getTipoParticipacion($event)">
+</app-docente-item-table> -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Añadir Docentes</h4>
+  </div>
+  <div class="modal-body">
+    <table class="table table-hover table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Correo</th>
+          <th>Activo</th>
+          <th>Rol</th>
+          <th>Agregar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let docente of docentes" 
+          app-docente-item-table [docente]="docente" (sendDocenteData)="getTipoParticipacionInterna($event)">
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')"  (click)="limiparSeleccion()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="agregarParticipacionesInternasSeleccionadas()" (click)="modal.close('Close click')">Agregar</button>
+  </div>
+</ng-template>
+
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Añadir Participantes</h4>
+  </div>
+  <div class="modal-body">
+    <table class="table table-hover table-sm">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Agregar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let participante of participantesExternos" app-participante-item-table [participanteExterno]="participante" (sendParticipanteData)="getTipoParticipacionExterna($event)"></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')"  (click)="limiparSeleccion()">Cancelar</button>
+    <button type="button" class="btn btn-primary" (click)="agregarParticipacionesExternasSeleccionadas()" (click)="modal.close('Close click')">Agregar</button>
+  </div>
+</ng-template>
+
+<div class="container">
+  <h2>Nuevo Proyecto de Investigación</h2>
+  <form #projectForm="ngForm">
+    <div class="form-group">
+      <label for="codigo">Código</label>
+      <input type="text" class="form-control" id="codigo" required [(ngModel)]=proyectoInvestigacion.codigo name="codigo">
+      <!-- TODO: remove this: {{proyectoInvestigacion.codigo}} -->
+    </div>
+
+    <div class="form-group">
+      <label for="titulo">Título</label>
+      <input type="text" class="form-control" id="titulo" required [(ngModel)]=proyectoInvestigacion.titulo name="titulo">
+      <!-- TODO: remove this: {{proyectoInvestigacion.titulo}} -->
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Descripción</label>
+      <textarea class="form-control" id="descripcion" rows="3" [(ngModel)]=proyectoInvestigacion.descripcion name="descripcion"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="objectivo">Objetivo General</label>
+      <input type="text" class="form-control" id="objectivo" required [(ngModel)]=proyectoInvestigacion.objetivoGeneral name="objectivo">
+      <!-- TODO: remove this: {{proyectoInvestigacion.titulo}} -->
+    </div>
+
+    <div class="form-group">
+      <label for="recinto">Recinto</label>
+      <select class="form-control" id="recinto" required
+        [(ngModel)]="proyectoInvestigacion.recinto.idRecinto" name="recinto">
+        <option *ngFor="let recinto of recintos" [value]="recinto.idRecinto">
+          {{ recinto.nombre }}
+        </option>
+      </select>
+      <!-- TODO: remove this: {{proyectoInvestigacion.recinto.nombre}} -->
+    </div>
+
+    <div class="form-group">
+      <label for="fechaInicio">Fecha Inicio</label>
+      <input type="date" class="form-control" id="fechaInicio" min="2018-01-01" max="2018-12-31"
+        required [(ngModel)]=proyectoInvestigacion.fechaInicio name="fechaInicio">
+      <!-- TODO: remove this: {{proyectoInvestigacion.fechaInicio}} -->
+    </div>
+
+    <div class="form-group">
+      <label for="fechaFinal">Fecha Final</label>
+      <input type="date" class="form-control" id="fechaFinal" min="2018-01-01" max="2018-12-31"
+        required [(ngModel)]=proyectoInvestigacion.fechaFinal name="fechaFinal">
+      <!-- TODO: remove this: {{proyectoInvestigacion.fechaFinal}} -->
+    </div>
+  </form>
+
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content)">Agrear Docentes</button>
+  <table class="table table-hover table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Correo</th>
+        <th>Rol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let participacion of participacionesInternas">
+        <td> {{ participacion.docente.nombre }} </td>
+        <td> {{ participacion.docente.apellidos }} </td>
+        <td> {{ participacion.docente.correoInstitucional }} </td>
+        <td> {{ participacion.idParticipacion }} </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content2)">Agrear Participantes</button>
+  <table class="table table-hover table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Correo</th>
+        <th>Rol</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let participacion of participacionesExternas">
+        <td> {{ participacion.participanteExterno.nombre }} </td>
+        <td> {{ participacion.participanteExterno.apellidos }} </td>
+        <td> {{ participacion.participanteExterno.correoElectronico }} </td>
+        <td> {{ participacion.idParticipacion }} </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" (click)="saveProyectoInvestigacion()">Guradar Proyecto</button>
+</div>

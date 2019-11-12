@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<title>Spring Boot Security</title>
+</head>
+<body>
+	<p>
+		Welcome Administrator(<span sec:authentication="principal.username">User</span>)
+		<p>Spring Security Dialect</p>
+		<div sec:authorize="hasRole('ROLE_CUSTOMER')">Text visible to user.</div>
+		<div sec:authorize="hasRole('ROLE_ADMIN')">Text visible to user.</div>
+		<div sec:authorize="isAuthenticated()">
+			Text visible only to authenticated users.
+		</div>
+		Authenticated username:
+		<div sec:authentication="name"></div>
+		Authenticated user roles:
+		<div sec:authentication="principal.authorities"></div>
+	</p>
+	<p>
+	<a th:href="@{/logout}">Logout</a>
+	</p>		
+</body>
+</html>

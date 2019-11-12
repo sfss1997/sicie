@@ -1,56 +1,45 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-
 import { recintoDataService } from '../Services/data.service';
-
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu-coordinacion-docentes',
   templateUrl: './menu-coordinacion-docentes.component.html',
   styleUrls: ['./menu-coordinacion-docentes.component.css']
 })
-export class MenuCoordinacionDocentesComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'editar', 'eliminar','estado'];
+export class MenuCoordinacionDocentesComponent  {
+  displayedColumns = ['idDocente', 'nombre', 'apellidos', 'editar','eliminar','activo'];
   dataSource: MatTableDataSource<UserData>;
   message:string;
+  data:any;
+  docentes:any;
 
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
+  constructor(private recintoData: recintoDataService, public http: HttpClient) {
 
-  constructor(private recintoData: recintoDataService) {
+    this.data = this.http.get('http://localhost:8080/docentes/api/docente');
+    this.data.subscribe(data => {
+      this.docentes = data;
+      console.log(this.docentes);
 
-   
-  
+      this.dataSource = new MatTableDataSource(data);
+    })
 
-    // Create 100 users
-    const users: UserData[] = [];
-    this.docenteService.getAll().subscribe(data => this.docentes=data);
-    //for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
-
-    // Assign the data to the data source for the table to render
-    //this.dataSource = new MatTableDataSource(users);
   }
 
-  getAll():Docente[]{
-    return this.docentes;
-  }
   ngOnInit() {
+    this.recintoData.recinto.subscribe(recinto=> this.message = recinto);
   }
-
-  onSubmit(){
-    
-  }
-
   /**
    * Set the paginator and sort after the view init since this component will
    * be able to query its view for the initialized paginator and sort.
    */
   ngAfterViewInit() {
-    this.recintoData.recinto.subscribe(recinto=> this.message = recinto);
-
+   // this.recintoData.recinto.subscribe(recinto=> this.message = recinto);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -62,36 +51,10 @@ export class MenuCoordinacionDocentesComponent implements OnInit {
   }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
-    estado:'activo'
-  };
-
-
   
-
-}
-
-/** Constants used to fill up our data base. */
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
 export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-  estado: string;
+  idDocente: number;
+  nombre: string;
+  apellidos: string;
+  activo: boolean;
 }

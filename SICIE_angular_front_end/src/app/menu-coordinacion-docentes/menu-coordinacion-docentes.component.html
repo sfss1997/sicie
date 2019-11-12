@@ -18,9 +18,9 @@
   <mat-table [dataSource]="dataSource" matSort>
 
     <!-- ID Column -->
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="idDocente">
       <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> ID </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{item.idDocente}} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{row.idDocente}} </mat-cell>
     </ng-container>
 
     <!-- Progress Column -->
@@ -31,13 +31,19 @@
           <a routerLink="/docentes/editar">
             <img width="20" alt="edit" src="assets/edit.png" />
           </a>
+
       </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Docente </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{item.nombre}} </mat-cell>
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.nombre}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="apellidos">
+      <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Apellidos</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.apellidos}} </mat-cell>
     </ng-container>
 
     <!-- Color Column -->
@@ -50,10 +56,10 @@
       </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="estado">
+    <ng-container matColumnDef="activo">
       <mat-header-cell *matHeaderCellDef mat-sort-header style="background-color: #E6E6E6; color: black; font-size: 100%;"> Estado </mat-header-cell>
       <mat-cell *matCellDef="let row" style="color: black">
-        {{row.estado}}
+        {{row.activo}}
       </mat-cell>
     </ng-container>
 

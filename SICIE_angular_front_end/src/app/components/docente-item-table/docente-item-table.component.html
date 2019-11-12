@@ -1,0 +1,16 @@
+<td *ngFor="let col of columnas">
+    {{ docente[col] }}
+</td>
+<td>
+    <select id="participacion" [(ngModel)]="tipoParticipacionInterna.idParticipacion" name="participacion">
+        <option *ngFor="let participacion of participaciones" [value]="participacion.idParticipacion">
+            {{ participacion.descripcion }}
+        </option>  
+    </select>
+</td>
+<td>
+    <input type="checkbox" id="cbox" 
+        [value]="docente.idDocente" 
+        [(ngModel)]="isChecked" name="cbox" 
+        (change)="addParticipacion()">
+</td>
