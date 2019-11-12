@@ -1,0 +1,26 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.row-codigo {
+    width: 90px;
+}
+
+.row-titulo {
+    width: 250px;
+}
+
+.row-docente {
+    width: 150px;
+}
+
+.row-editar {
+    width: 60px;
+}
+
+.row-eliminar {
+    width: 70px;
+}
+
+

@@ -1,0 +1,16 @@
+<td *ngFor="let col of columnas">
+    {{ participanteExterno[col] }}
+</td>
+<td>
+    <select name="participacion" id="participacion" [(ngModel)]="tipoParticipacionExterna.idParticipacion">
+        <option *ngFor="let participacion of tipoParticipacionesExternas" [value]="participacion.idParticipacion">
+            {{ participacion.descripcion }}
+        </option>
+    </select>
+</td>
+<td>
+    <input type="checkbox" id="cbox" 
+        [value]="participanteExterno.idParticipanteExterno" 
+        [(ngModel)]="isChecked" name="cbox" 
+        (change)="addParticipacion()">
+</td>
