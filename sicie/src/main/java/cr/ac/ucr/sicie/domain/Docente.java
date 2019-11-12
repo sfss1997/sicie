@@ -40,9 +40,9 @@ public class Docente {
 		this.activo = activo;
 	}
 
+	public Docente() {}
 
-	
-	
+
 	public int getIdDocente() {
 		return idDocente;
 	}

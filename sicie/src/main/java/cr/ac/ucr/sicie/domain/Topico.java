@@ -11,8 +11,12 @@ public class Topico {
 		this.idTopico = idTopico;
 		this.topico = topico;
 	}
-	
-	public int getIdTopico() {
+
+    public Topico() {
+
+    }
+
+    public int getIdTopico() {
 		return idTopico;
 	}
 	public void setIdTopico(int idTopico) {

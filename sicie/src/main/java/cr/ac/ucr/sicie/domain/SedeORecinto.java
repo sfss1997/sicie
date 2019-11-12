@@ -12,8 +12,11 @@ public class SedeORecinto {
 		this.nombre = nombre;
 	}
 
-	
-	
+    public SedeORecinto() {
+
+    }
+
+
 	public int getIdRecinto() {
 		return idRecinto;
 	}

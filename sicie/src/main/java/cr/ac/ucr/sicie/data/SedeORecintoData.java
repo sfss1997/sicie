@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -33,6 +35,23 @@ public class SedeORecintoData {
 		return jdbcTemplate
 				.query(selectMysql, new Object[] {  },
 						(rs, row) -> new SedeORecinto(rs.getInt("id_recinto"),rs.getString("nombre_recinto"))).iterator();
+	}
+
+	public SedeORecinto getRecintoById(int idRecinto) {
+		String sqlSelect = "SELECT id_recinto, nombre" +
+				" FROM Recinto" +
+				" WHERE id_recinto = ?;";
+		return (SedeORecinto) jdbcTemplate.queryForObject(sqlSelect, new Object[]{idRecinto}, (rs , row) ->
+				new SedeORecinto(idRecinto, rs.getString("nombre")));
+	}
+
+	public List<SedeORecinto> getAllRecintos() {
+		String sqlSelect = "SELECT id_recinto, nombre" +
+				" FROM Recinto;";
+		List<SedeORecinto> recintos = new LinkedList<>(jdbcTemplate.query(sqlSelect, new Object[]{}, (rs, row) ->
+				new SedeORecinto(rs.getInt("id_recinto"),
+						rs.getString("nombre"))));
+		return recintos;
 	}
 
 }

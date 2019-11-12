@@ -10,7 +10,11 @@ public class Especializacion {
 		this.especializacion = especializacion;
 	}
 
-	public int getIdEspecializacion() {
+    public Especializacion() {
+
+    }
+
+    public int getIdEspecializacion() {
 		return idEspecializacion;
 	}
 
