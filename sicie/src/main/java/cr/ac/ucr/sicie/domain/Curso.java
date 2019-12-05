@@ -19,14 +19,7 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso( String sigla, String nombre, int nivel, int creditos,  String planDeEstudios, boolean optativa) {
-        this.planDeEstudios = planDeEstudios;
-        this.sigla = sigla;
-        this.nombre = nombre;
-        this.creditos = creditos;
-        this.nivel = nivel;
-        this.optativa = optativa;
-    }
+    
     
     public Curso(Bloque bloque, List<Curso> cursosRequisitos, List<Curso> cursosCorrequisitos, List<Enfasis> enfasis, List<ProgramaCurso> programas, String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
         this.bloque = bloque;

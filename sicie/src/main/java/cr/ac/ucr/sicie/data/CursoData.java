@@ -5,6 +5,7 @@
  */
 package cr.ac.ucr.sicie.data;
 
+import cr.ac.ucr.sicie.bussines.BloqueBusiness;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,8 @@ public class CursoData {
     @Autowired
     private DataSource dataSource;
     
+    private BloqueBusiness bloqueBusiness;
+    
     @Transactional
     public Iterator<Curso> listarCursos(){
         
@@ -42,8 +45,18 @@ public class CursoData {
 		selectMysql = "SELECT sigla,nombre,nivel,creditos,plan_estudio_codigo,optativa FROM curso";
 		return jdbcTemplate
 				.query(selectMysql, new Object[] {  },
-						(rs, row) -> new Curso(rs.getString("sigla"),rs.getString("nombre"), rs.getInt("nivel"), rs.getInt("creditos"), rs.getString("plan_estudio_codigo"),rs.getBoolean("optativo"))).iterator();
-                                                                 
+						
+                                               (rs, row) -> new Curso(bloqueBusiness.buscarBloquePorCurso(rs.getString("sigla")),//bloque
+                                                       null,//cursosRequisitosLista
+                                                       null,//cursosCorrequisitosLista
+                                                       null,//enfasisLista
+                                                       null,//programasLista
+                                                       rs.getString("plan_estudio_codigo"),
+                                                       rs.getString("sigla"),
+                                                       rs.getString("nombre"),
+                                                       rs.getInt("creditos"),
+                                                       rs.getInt("nivel"),
+                                                       rs.getBoolean("optativo"))).iterator();
     }
     
     @Transactional
@@ -165,19 +178,30 @@ public class CursoData {
     }
 }
 
-class CursoExtractor implements ResultSetExtractor<Curso> {
-	@Override
-	public Curso extractData(ResultSet rs) throws SQLException, DataAccessException {
-		
-		rs.next();
-                
-                String sigla = rs.getString("sigla");
-                String nombre = rs.getString("nombre");
-                int nivel = rs.getInt("nivel");
-                int creditos = rs.getInt("creditos");
-                String planDeEstudios = rs.getString("plan_estudio_codigo");
-                boolean optativa = rs.getBoolean("optativa");
-               
-		return new Curso(sigla, nombre, nivel, creditos, planDeEstudios, optativa);
-	}
-}
+//class CursoExtractor implements ResultSetExtractor<Curso> {
+//	@Override
+//	public Curso extractData(ResultSet rs) throws SQLException, DataAccessException {
+//		
+//		rs.next();
+//                
+//                String sigla = rs.getString("sigla");
+//                String nombre = rs.getString("nombre");
+//                int nivel = rs.getInt("nivel");
+//                int creditos = rs.getInt("creditos");
+//                String planDeEstudios = rs.getString("plan_estudio_codigo");
+//                boolean optativa = rs.getBoolean("optativa");
+//               
+//		//return new Curso(sigla, nombre, nivel, creditos, planDeEstudios, optativa);
+//                return new Curso(null,//bloque
+//                        null,//cursosRequisitos
+//                        null,//cursosCorrequisitos,
+//                        null,//enfasis,
+//                        null,//programas,
+//                        planDeEstudios,
+//                        sigla,
+//                        nombre,
+//                        creditos,
+//                        nivel,
+//                        optativa);
+//	}
+//}
