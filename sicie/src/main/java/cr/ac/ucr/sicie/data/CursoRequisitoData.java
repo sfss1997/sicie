@@ -23,7 +23,7 @@ public class CursoRequisitoData {
 
     public Iterator<String> buscarCursosRequisito(String sigla) {
         
-        String selectSql = "SELECT sigla_requisito FROM curso WHERE sigla_curso=" + sigla + ";";
+        String selectSql = "SELECT sigla_requisito FROM curso_requisito WHERE sigla_curso=" + sigla + ";";
         return jdbcTemplate
                 .query(selectSql, new Object[]{},
                         (rs, row) -> new String(rs.getString("sigla_requisito"))).iterator();

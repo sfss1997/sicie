@@ -53,35 +53,20 @@ public class CursoData {
         selectSql = "SELECT sigla,nombre,nivel,creditos,plan_estudio_codigo,optativa FROM curso";
         return jdbcTemplate
                 .query(selectSql, new Object[]{},
-                        (rs, row) -> new Curso(bloqueBusiness.buscarBloquePorCurso(rs.getString("sigla")),//bloque
-                                (List<Curso>) requisitoBusiness.buscarCursosRequisito(rs.getString("sigla")),//cursosRequisitosLista
-                                (List<Curso>) correquisitoBusiness.buscarCursosCorrequisito(rs.getString("sigla")),//cursosCorrequisitosLista
-                                (List<String>) enfasisBusiness.buscarEnfasisBySiglaCurso(rs.getString("sigla")),//enfasisLista
-                                (List<ProgramaCurso>)programaCursoBusiness.buscarProgramasPorCurso(rs.getString("sigla")),//programasLista
+                        (rs, row) -> new Curso(
+                                null,//bloqueBusiness.buscarBloquePorCurso(rs.getString("sigla")),//bloque
+                                null,//requisitoBusiness.buscarCursosRequisito(rs.getString("sigla")),//cursosRequisitosLista
+                                null,//correquisitoBusiness.buscarCursosCorrequisito(rs.getString("sigla")),//cursosCorrequisitosLista
+                                null,//enfasisBusiness.buscarEnfasisBySiglaCurso(rs.getString("sigla")),//enfasisLista
+                                null,//programaCursoBusiness.buscarProgramasPorCurso(rs.getString("sigla")),//programasLista
+                                null,
                                 rs.getString("plan_estudio_codigo"),
                                 rs.getString("sigla"),
                                 rs.getString("nombre"),
                                 rs.getInt("creditos"),
                                 rs.getInt("nivel"),
-                                rs.getBoolean("optativo"))).iterator();
-    }
-
-    public Iterator<Curso> buscarCursos(String sigla) {
-    
-        String selectSql = "SELECT sigla,nombre,nivel,creditos,plan_estudio_codigo,optativa FROM curso WHERE sigla=" + sigla + ";";
-        return jdbcTemplate
-                .query(selectSql, new Object[]{},
-                        (rs, row) -> new Curso(bloqueBusiness.buscarBloquePorCurso(rs.getString("sigla")),//bloque
-                                (List<Curso>) requisitoBusiness.buscarCursosRequisito(rs.getString("sigla")),//cursosRequisitosLista
-                                (List<Curso>) correquisitoBusiness.buscarCursosCorrequisito(rs.getString("sigla")),//cursosCorrequisitosLista
-                                (List<String>) enfasisBusiness.buscarEnfasisBySiglaCurso(rs.getString("sigla")),//enfasisLista
-                                (List<ProgramaCurso>)programaCursoBusiness.buscarProgramasPorCurso(rs.getString("sigla")),//programasLista
-                                rs.getString("plan_estudio_codigo"),
-                                rs.getString("sigla"),
-                                rs.getString("nombre"),
-                                rs.getInt("creditos"),
-                                rs.getInt("nivel"),
-                                rs.getBoolean("optativo"))).iterator();
+                                rs.getBoolean("optativa"))).iterator();
+                                
     }
 
     public Iterator<Curso> buscarCursosPorPlan(String codigo){
@@ -89,17 +74,19 @@ public class CursoData {
         String selectSql = "SELECT sigla,nombre,nivel,creditos,plan_estudio_codigo,optativa FROM curso WHERE plan_estudio_codigo=" + codigo + ";";
         return jdbcTemplate
                 .query(selectSql, new Object[]{},
-                        (rs, row) -> new Curso(bloqueBusiness.buscarBloquePorCurso(rs.getString("sigla")),//bloque
-                                (List<Curso>) requisitoBusiness.buscarCursosRequisito(rs.getString("sigla")),//cursosRequisitosLista
-                                (List<Curso>) correquisitoBusiness.buscarCursosCorrequisito(rs.getString("sigla")),//cursosCorrequisitosLista
-                                (List<String>) enfasisBusiness.buscarEnfasisBySiglaCurso(rs.getString("sigla")),//enfasisLista
-                                (List<ProgramaCurso>)programaCursoBusiness.buscarProgramasPorCurso(rs.getString("sigla")),//programasLista
+                        (rs, row) -> new Curso(
+                                null,//bloqueBusiness.buscarBloquePorCurso(rs.getString("sigla")),//bloque
+                                null,//requisitoBusiness.buscarCursosRequisito(rs.getString("sigla")),//cursosRequisitosLista
+                                null,//correquisitoBusiness.buscarCursosCorrequisito(rs.getString("sigla")),//cursosCorrequisitosLista
+                                null,//enfasisBusiness.buscarEnfasisBySiglaCurso(rs.getString("sigla")),//enfasisLista
+                                null,//programaCursoBusiness.buscarProgramasPorCurso(rs.getString("sigla")),//programasLista
+                                null,
                                 rs.getString("plan_estudio_codigo"),
                                 rs.getString("sigla"),
                                 rs.getString("nombre"),
                                 rs.getInt("creditos"),
                                 rs.getInt("nivel"),
-                                rs.getBoolean("optativo"))).iterator();
+                                rs.getBoolean("optativa"))).iterator();
     }
     
     public void insertarCurso(Curso curso) {

@@ -7,6 +7,7 @@ package cr.ac.ucr.sicie.bussines;
 
 import cr.ac.ucr.sicie.data.ProgramaCursoData;
 import cr.ac.ucr.sicie.domain.ProgramaCurso;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,9 +24,16 @@ public class ProgramaCursoBusiness {
         return programaCursoData.listarProgramasCurso();
     }
     
-    public Iterator<ProgramaCurso> buscarProgramasPorCurso(String sigla){
+    public List<ProgramaCurso> buscarProgramasPorCurso(String sigla){
         
-        return programaCursoData.buscarProgramasPorCurso(sigla);
+        Iterator<ProgramaCurso> iterator = programaCursoData.buscarProgramasPorCurso(sigla);
+        ArrayList<ProgramaCurso> list = new ArrayList<ProgramaCurso>();
+         
+            while (iterator.hasNext()) {
+                ProgramaCurso programaCurso = iterator.next();
+                list.add(programaCurso);
+            }
+        return list;
     }
     
     public void insertarProgramaCurso(ProgramaCurso programaCurso, String siglaCurso){

@@ -6,7 +6,9 @@
 package cr.ac.ucr.sicie.bussines;
 
 import cr.ac.ucr.sicie.data.CursoCorrequisitoData;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -15,8 +17,15 @@ import java.util.Iterator;
 public class CorrequisitoBusiness {
     private CursoCorrequisitoData correquisitoData;
     
-    public Iterator<String> buscarCursosCorrequisito(String sigla) {
-        
-       return correquisitoData.buscarCursosCorrequisito(sigla);
+    public List<String> buscarCursosCorrequisito(String sigla) {
+         
+        Iterator<String> iterator = correquisitoData.buscarCursosCorrequisito(sigla);
+        ArrayList<String> list = new ArrayList<String>();
+         
+            while (iterator.hasNext()) {
+                String correquisito = iterator.next();
+                list.add(correquisito);
+            }
+        return list;
     }
 }

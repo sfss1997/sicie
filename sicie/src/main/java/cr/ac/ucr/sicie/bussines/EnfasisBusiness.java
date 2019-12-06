@@ -7,6 +7,7 @@ package cr.ac.ucr.sicie.bussines;
 
 import cr.ac.ucr.sicie.data.EnfasisData;
 import cr.ac.ucr.sicie.domain.Enfasis;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,9 +24,16 @@ public class EnfasisBusiness {
         return enfasisData.listarEnfasis();
     }
     
-    public Iterator<String> buscarEnfasisBySiglaCurso(String Sigla){
-  
-        return enfasisData.buscarEnfasisBySiglaCurso(Sigla);
+    public List<String> buscarEnfasisBySiglaCurso(String Sigla){
+        
+        Iterator<String> iterator = enfasisData.buscarEnfasisBySiglaCurso(Sigla);
+        ArrayList<String> list = new ArrayList<String>();
+         
+            while (iterator.hasNext()) {
+                String enfasis = iterator.next();
+                list.add(enfasis);
+            }
+        return list;
     }
     
     public void insertarEnfasis(Enfasis enfasis){

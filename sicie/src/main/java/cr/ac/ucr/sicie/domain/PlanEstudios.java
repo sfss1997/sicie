@@ -5,7 +5,7 @@ import java.util.*;
 
 public class PlanEstudios {
 
-    private List<Curso> cursos;
+    private ArrayList<Curso> cursos;
     private String codigo;
     private String nombreCarrera;
     private int anoResolucion;
@@ -16,7 +16,7 @@ public class PlanEstudios {
     public PlanEstudios() {
     }
 
-    public PlanEstudios(List<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, boolean vigente, String documentoFundamentacionCarrera, String resolucionDeCreacionDeCarrera) {
+    public PlanEstudios(ArrayList<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, boolean vigente, String documentoFundamentacionCarrera, String resolucionDeCreacionDeCarrera) {
         this.cursos = cursos;
         this.codigo = codigo;
         this.nombreCarrera = nombreCarrera;
@@ -26,11 +26,11 @@ public class PlanEstudios {
         this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
     }
 
-    public List<Curso> getCursos() {
+    public ArrayList<Curso> getCursos() {
         return cursos;
     }
 
-    public void setCursos(List<Curso> cursos) {
+    public void setCursos(ArrayList<Curso> cursos) {
         this.cursos = cursos;
     }
 
@@ -81,7 +81,13 @@ public class PlanEstudios {
     public void setResolucionDeCreacionDeCarrera(String resolucionDeCreacionDeCarrera) {
         this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
     }
-    
+
+    @Override
+    public String toString() {
+        return "PlanEstudios{" + "cursos=" + cursos + ", codigo=" + codigo + ", nombreCarrera=" + nombreCarrera + ", anoResolucion=" + anoResolucion + ", documentoFundamentacionCarrera=" + documentoFundamentacionCarrera + ", vigente=" + vigente + ", resolucionDeCreacionDeCarrera=" + resolucionDeCreacionDeCarrera + '}';
+    }
+
+   
     
     
     

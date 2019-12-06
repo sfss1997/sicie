@@ -39,12 +39,13 @@ public class PlanEstudiosData {
     private CursoBusiness cursoBusiness;
 
     public Iterator<PlanEstudios> listarPlanesEstudios() {
-
-        String selectMysql;
-        selectMysql = "SELECT codigo,nombre_carrera,ano_resolucion,vigente FROM plan_estudios";
+         
+        String selectSql;
+        selectSql = "SELECT codigo,nombre_carrera,ano_resolucion,vigente,documento_fundamentacion_carrera,resolucion_creacion_carrera FROM plan_estudios";
         return jdbcTemplate
-                 .query(selectMysql, new Object[]{},
-                         (rs, row) -> new PlanEstudios((List<Curso>) cursoBusiness.buscarCursosPorPlan( rs.getString("codigo")),
+                 .query(selectSql, new Object[]{},
+                         (rs, row) -> new PlanEstudios(//cursoBusiness.buscarCursosPorPlan(""),
+                                 null,
                          rs.getString("codigo"), 
                          rs.getString("nombre_carrera"), 
                          rs.getInt("ano_resolucion"), 
@@ -54,10 +55,10 @@ public class PlanEstudiosData {
     }
 
     public Iterator<PlanEstudios> buscarPlanesEstudios(String codigo) {
-        String selectMysql = "SELECT codigo,nombre_carrera,ano_resolucion,vigente FROM plan_estudios WHERE codigo=" + codigo + ";";
+        String selectMysql = "SELECT codigo,nombre_carrera,ano_resolucion,vigente,documento_fundamentacion_carrera,resolucion_creacion_carrera FROM plan_estudios WHERE codigo=" + codigo + ";";
         return jdbcTemplate
                 .query(selectMysql, new Object[]{},
-                         (rs, row) -> new PlanEstudios((List<Curso>) cursoBusiness.buscarCursosPorPlan( rs.getString("codigo")),
+                         (rs, row) -> new PlanEstudios(cursoBusiness.buscarCursosPorPlan( rs.getString("codigo")),
                          rs.getString("codigo"), 
                          rs.getString("nombre_carrera"), 
                          rs.getInt("ano_resolucion"), 
@@ -73,12 +74,14 @@ public class PlanEstudiosData {
             connection = dataSource.getConnection();
             connection.setAutoCommit(false);
 
-            String sqlInsert = "INSERT INTO plan_estudio(codigo,nombre_carrera,ano_resolucion,vigente) VALUES(?,?,?,?);";
+            String sqlInsert = "INSERT INTO plan_estudios(codigo,nombre_carrera,ano_resolucion,vigente,documento_fundamentacion_carrera,resolucion_creacion_carrera) VALUES(?,?,?,?,?,?);";
             PreparedStatement stmt = connection.prepareStatement(sqlInsert);
             stmt.setString(1, planEstudios.getCodigo());
             stmt.setString(2, planEstudios.getNombreCarrera());
             stmt.setInt(3, planEstudios.getAnoResolucion());
             stmt.setObject(4, planEstudios.isVigente());
+            stmt.setString(5, planEstudios.getDocumentoFundamentacionCarrera());
+            stmt.setString(6, planEstudios.getResolucionDeCreacionDeCarrera());
             stmt.execute();
 
             connection.commit();
