@@ -7,6 +7,7 @@ package cr.ac.ucr.sicie.bussines;
 
 import cr.ac.ucr.sicie.data.EnfasisData;
 import cr.ac.ucr.sicie.domain.Enfasis;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,9 +23,9 @@ public class EnfasisBusiness {
         return enfasisData.listarEnfasis();
     }
     
-    public List<Enfasis> buscarEnfasis(String id){
-        
-        return enfasisData.buscarEnfasis(id);
+    public Iterator<String> buscarEnfasisBySiglaCurso(String Sigla){
+  
+        return enfasisData.buscarEnfasisBySiglaCurso(Sigla);
     }
     
     public void insertarEnfasis(Enfasis enfasis){

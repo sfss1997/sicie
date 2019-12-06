@@ -43,16 +43,25 @@ public class ProgramaCursoData {
 		selectMysql = "SELECT version,vigente,sigla_curso FROM programa_curso";
 		return jdbcTemplate
 				.query(selectMysql, new Object[] {  },
-						(rs, row) -> new ProgramaCurso(rs.getInt("version"), rs.getBoolean("vigente"),rs.getString("sigla_curso"))).iterator();
+					(rs, row) -> new ProgramaCurso(
+                                rs.getInt("version"),
+                                rs.getBoolean("vigente"),
+                                rs.getString("sigla_curso"),
+                                rs.getString("programa_curso_base"))).iterator();
+	
         
     }
     
     @Transactional
-    public List<ProgramaCurso> buscarProgramasCurso(int version){
-        List<ProgramaCurso> programasCurso = new ArrayList<ProgramaCurso>();
-        String sqlScript = "SELECT * FROM programa_curso WHERE version="+version+";";
-                
-        return programasCurso;
+    public Iterator<ProgramaCurso> buscarProgramasPorCurso(String sigla){
+        String selectSql = "SELECT version,vigente,sigla_curso,programa_curso_base FROM programa_curso WHERE sigla_curso="+sigla+";";
+        return jdbcTemplate
+                .query(selectSql, new Object[]{},
+                        (rs, row) -> new ProgramaCurso(
+                                rs.getInt("version"),
+                                rs.getBoolean("vigente"),
+                                rs.getString("sigla_curso"),
+                                rs.getString("programa_curso_base"))).iterator();
     }
     
     @Transactional
@@ -163,19 +172,6 @@ public class ProgramaCursoData {
     }
 }
 
-class ProgramaCursoExtractor implements ResultSetExtractor<ProgramaCurso> {
 
-    @Override
-    public ProgramaCurso extractData(ResultSet rs) throws SQLException, DataAccessException {
-
-        rs.next();
-
-        int version = rs.getInt("version");
-        boolean vigente = rs.getBoolean("vigente");
-        String siglaCurso = rs.getString("sigla_curso");
-
-        return new ProgramaCurso(version, vigente, siglaCurso);
-    }
-}
 
 

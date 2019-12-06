@@ -9,21 +9,14 @@ public class PlanEstudios {
     private String codigo;
     private String nombreCarrera;
     private int anoResolucion;
-    private File documentoFundamentacionCarrera;
+    private String documentoFundamentacionCarrera;
     private boolean vigente;
-    private File resolucionDeCreacionDeCarrera;
+    private String resolucionDeCreacionDeCarrera;
 
     public PlanEstudios() {
     }
 
-    public PlanEstudios(String codigo, String nombreCarrera, int anoResolucion, boolean vigente) {
-        this.codigo = codigo;
-        this.nombreCarrera = nombreCarrera;
-        this.anoResolucion = anoResolucion;
-        this.vigente = vigente;
-    }
-
-    public PlanEstudios(List<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, File documentoFundamentacionCarrera, boolean vigente, File resolucionDeCreacionDeCarrera) {
+    public PlanEstudios(List<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, boolean vigente, String documentoFundamentacionCarrera, String resolucionDeCreacionDeCarrera) {
         this.cursos = cursos;
         this.codigo = codigo;
         this.nombreCarrera = nombreCarrera;
@@ -65,11 +58,11 @@ public class PlanEstudios {
         this.anoResolucion = anoResolucion;
     }
 
-    public File getDocumentoFundamentacionCarrera() {
+    public String getDocumentoFundamentacionCarrera() {
         return documentoFundamentacionCarrera;
     }
 
-    public void setDocumentoFundamentacionCarrera(File documentoFundamentacionCarrera) {
+    public void setDocumentoFundamentacionCarrera(String documentoFundamentacionCarrera) {
         this.documentoFundamentacionCarrera = documentoFundamentacionCarrera;
     }
 
@@ -81,16 +74,18 @@ public class PlanEstudios {
         this.vigente = vigente;
     }
 
-    public File getResolucionDeCreacionDeCarrera() {
+    public String getResolucionDeCreacionDeCarrera() {
         return resolucionDeCreacionDeCarrera;
     }
 
-    public void setResolucionDeCreacionDeCarrera(File resolucionDeCreacionDeCarrera) {
+    public void setResolucionDeCreacionDeCarrera(String resolucionDeCreacionDeCarrera) {
         this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
     }
-
     
     
     
-
+    
 }
+    
+
+    

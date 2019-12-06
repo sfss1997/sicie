@@ -7,8 +7,9 @@ public class Curso {
     private Bloque bloque;
     private List<Curso> cursosRequisitos;
     private List<Curso> cursosCorrequisitos;
-    private List<Enfasis> enfasis;
+    private List<String> enfasis;
     private List<ProgramaCurso> programas;
+    private List<String> optativos;
     private String planDeEstudios;
     private String sigla;
     private String nombre;
@@ -21,7 +22,7 @@ public class Curso {
 
     
     
-    public Curso(Bloque bloque, List<Curso> cursosRequisitos, List<Curso> cursosCorrequisitos, List<Enfasis> enfasis, List<ProgramaCurso> programas, String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
+    public Curso(Bloque bloque, List<Curso> cursosRequisitos, List<Curso> cursosCorrequisitos, List<String> enfasis, List<ProgramaCurso> programas, String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
         this.bloque = bloque;
         this.cursosRequisitos = cursosRequisitos;
         this.cursosCorrequisitos = cursosCorrequisitos;
@@ -59,11 +60,11 @@ public class Curso {
         this.cursosCorrequisitos = cursosCorrequisitos;
     }
 
-    public List<Enfasis> getEnfasis() {
+    public List<String> getEnfasis() {
         return enfasis;
     }
 
-    public void setEnfasis(List<Enfasis> enfasis) {
+    public void setEnfasis(List<String> enfasis) {
         this.enfasis = enfasis;
     }
 

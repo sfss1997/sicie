@@ -23,9 +23,9 @@ public class ProgramaCursoBusiness {
         return programaCursoData.listarProgramasCurso();
     }
     
-    public List<ProgramaCurso> buscarProgramasCurso(int version){
+    public Iterator<ProgramaCurso> buscarProgramasPorCurso(String sigla){
         
-        return programaCursoData.buscarProgramasCurso(version);
+        return programaCursoData.buscarProgramasPorCurso(sigla);
     }
     
     public void insertarProgramaCurso(ProgramaCurso programaCurso, String siglaCurso){

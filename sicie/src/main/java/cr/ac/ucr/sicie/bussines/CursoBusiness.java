@@ -24,10 +24,10 @@ public class CursoBusiness {
         return cursoData.listarCursos();
     }
     
-//    public List<Curso> buscarCursos(String sigla){
-//        
-//        return cursoData.buscarCursos(sigla);
-//    }
+    public Iterator<Curso> buscarCursos(String sigla){
+        
+        return cursoData.buscarCursos(sigla);
+    }
     
     public void insertarCurso(Curso curso){
         
@@ -42,6 +42,11 @@ public class CursoBusiness {
     public void eliminarCurso(String sigla){
     
         cursoData.eliminarCurso(sigla);
+    }
+    
+    public Iterator<Curso> buscarCursosPorPlan(String codigo){
+    
+        return cursoData.buscarCursosPorPlan(codigo);
     }
     
     
