@@ -1,7 +1,8 @@
 <app-navbar-coordinacion></app-navbar-coordinacion>
 
+
 <div class="container">
-    <div style=" align-self:  center; width: 100%;  margin-top: 2%; ">
+    <div style=" align-self:  center; width: 100%;  margin-top: 2%;">
         <h4>Buscar Proyectos de Investigacion</h4>
     </div>
     <form>
@@ -40,7 +41,6 @@
                 <th class="row-codigo" scope="col">Codigo</th>
                 <th class="row-titulo" scope="col">Titulo</th>
                 <th class="row-docente" scope="col">Docente a cargo</th>
-                <th scope="col">Descripcion</th>
                 <th scope="col">Fecha de inicio</th>
                 <th scope="col">Fecha de finalización</th>
                 <th scope="col">Recinto</th>
@@ -52,7 +52,8 @@
             <tr *ngFor="let proyecto of proyectos"
                 app-proyecto-item 
                 [proyectoInvestigacion]="proyecto" 
-                [columnas]="columnas"> 
+                [columnas]="columnas"
+                (sendProyectoData)= "confirmarEliminar($event)"> 
             </tr>
         </tbody>
     </table>

@@ -25,6 +25,11 @@ export class recintoDataService {
     console.log('set the ' + newRecinto)
   }
 
+  deleteProyecto(id: number): Observable<any> {
+    const url:string = this.proyectoUrl + "proyectoInvestigacion";
+    return this.http.delete(`${url}/${id}`, { responseType: 'text' });
+  }
+
   saveProyecto(proyectoInvestigacion: ProyectoInvestigacion): Observable<ProyectoInvestigacion> {
     const url:string = this.proyectoUrl + "proyectoInvestigacion/";
     return this.http.post<ProyectoInvestigacion>(url, proyectoInvestigacion)

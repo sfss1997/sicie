@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -40,6 +42,14 @@ public class ProyectoInvestigacionController {
                                                                             @PathVariable String docente) {
         List<ProyectoInvestigacion> proyectos = proyectoInvestigacionBusiness.getProyectosByFiltro(idRecinto, titulo, docente);
         return  new ResponseEntity<List<ProyectoInvestigacion>>(proyectos, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public Map<String, Boolean> deleteProyecto(@PathVariable(value = "id") int idProyecto) {
+        proyectoInvestigacionBusiness.deleteProyecto(idProyecto);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
     }
 
 }

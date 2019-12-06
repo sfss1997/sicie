@@ -25,4 +25,8 @@ public class ProyectoInvestigacionBusiness {
         return proyectoInvestigacionData.getProyectosByFiltro(idRecinto, tituloProyecto, docente);
     }
 
+    public boolean deleteProyecto(int idProyecto) {
+        return proyectoInvestigacionData.deleteProyecto(idProyecto);
+    }
+
 }
