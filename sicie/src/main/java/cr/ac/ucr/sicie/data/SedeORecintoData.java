@@ -27,8 +27,6 @@ public class SedeORecintoData {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	
-	
 	public Iterator<SedeORecinto> cargarRecinto(){
 		String selectMysql;
 		selectMysql = "select id_recinto, nombre_recinto from Recinto";

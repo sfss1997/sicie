@@ -61,6 +61,7 @@ public class DocenteData {
 			cstmt.execute();
 
 			docente = new Docente();
+			docente.setIdDocente(idDocente);
 			docente.setNombre(cstmt.getString(2));
 			docente.setApellidos(cstmt.getString(3));
 			docente.setGradoAcademico(cstmt.getString(4));

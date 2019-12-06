@@ -1,13 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProyectoInvestigacion } from 'src/app/models/ProyectoInvestigacion';
 
 @Component({
-  selector: '[app-proyecto-item]',
+  selector: '[app-proyecto-item], app-proyecto-item',
   templateUrl: './proyecto-item.component.html',
   styleUrls: ['./proyecto-item.component.css']
 })
 export class ProyectoItemComponent implements OnInit {
 
+  @Output() sendProyectoData = new EventEmitter<ProyectoInvestigacion>(); // emite informacion del proyecto seleccionado para el componente proyecto-form
   @Input() proyectoInvestigacion: ProyectoInvestigacion;
   @Input() columnas: string[];
 
@@ -36,6 +37,10 @@ export class ProyectoItemComponent implements OnInit {
       fechaFinal: this.proyectoInvestigacion.fechaFinal,
       recinto: this.proyectoInvestigacion.recinto.nombre
     };
+  }
+
+  sendProyecto() {
+    this.sendProyectoData.emit(this.proyectoInvestigacion);
   }
 
 }
