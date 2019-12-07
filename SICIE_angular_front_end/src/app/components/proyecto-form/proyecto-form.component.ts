@@ -36,10 +36,14 @@ export class ProyectoFormComponent implements OnInit {
     this.docente = new Docente();
     this.participacionesInternasTemp = [];
     this.participacionesExternasTemp = [];
-    this.proyectoInvestigacion = new ProyectoInvestigacion();
+    //this.proyectoInvestigacion = new ProyectoInvestigacion();
     this.participacionesInternas = [];
     this.participacionesExternas = [];
     this.mensaje = "";
+
+    this.proyectoInvestigacion = this.service.proyectoInvestigacion
+    this.participacionesExternas = this.service.proyectoInvestigacion.tipoParticipacionesExternas
+    this.participacionesInternas = this.service.proyectoInvestigacion.tipoParticipacionesInternas
 
     // subscripcion de servicios
     this.service.getAllRecintos().subscribe(recintos => {
@@ -53,7 +57,6 @@ export class ProyectoFormComponent implements OnInit {
     this.service.getAllParticipantesExternos().subscribe(participantes => {
       this.participantesExternos = participantes;
     });
-
   }
 
   openXl(content) { 
@@ -75,7 +78,6 @@ export class ProyectoFormComponent implements OnInit {
     } else {
       this.participacionesInternasTemp.push(tipoParticipacion);
     }
-    //console.log('parent ' + tipoParticipacion.docente.idDocente);
   }
 
   // seleccionar las participaciones de la tabla de participaciones (participanteExterno)
@@ -89,7 +91,6 @@ export class ProyectoFormComponent implements OnInit {
     } else {
       this.participacionesExternasTemp.push(tipoParticipacion);
     }
-    //console.log('parent ' + tipoParticipacion.docente.idDocente);
   }
 
   // mostrar las participaciones seleccionadas en la tabla del formulario
@@ -115,12 +116,19 @@ export class ProyectoFormComponent implements OnInit {
   }
 
   saveProyectoInvestigacion() {
-    const nuevoProyecto: ProyectoInvestigacion = this.proyectoInvestigacion;
-    nuevoProyecto.tipoParticipacionesExternas = this.participacionesExternas;
-    nuevoProyecto.tipoParticipacionesInternas = this.participacionesInternas;
-    this.service.saveProyecto(nuevoProyecto).subscribe(proyecto => {
-      this.proyectoInvestigacion = proyecto;
-    });
+    // Pregunta si se trata de un update 
+    if(this.proyectoInvestigacion.idProyectoInvestigacion != 0) {
+      this.service.updateProyect(this.proyectoInvestigacion.idProyectoInvestigacion, this.proyectoInvestigacion)
+      .subscribe(data => console.log(data), error => console.log(error));
+      this.service.unloadProyectData();
+    } else {
+      const nuevoProyecto: ProyectoInvestigacion = this.proyectoInvestigacion;
+      nuevoProyecto.tipoParticipacionesExternas = this.participacionesExternas;
+      nuevoProyecto.tipoParticipacionesInternas = this.participacionesInternas;
+      this.service.saveProyecto(nuevoProyecto).subscribe(proyecto => {
+        this.proyectoInvestigacion = proyecto;
+      });
+    }
   }
 
   confirmation(id: number) { 

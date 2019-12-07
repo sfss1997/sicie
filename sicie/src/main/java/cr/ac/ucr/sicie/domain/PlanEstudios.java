@@ -5,25 +5,18 @@ import java.util.*;
 
 public class PlanEstudios {
 
-    private List<Curso> cursos;
+    private ArrayList<Curso> cursos;
     private String codigo;
     private String nombreCarrera;
     private int anoResolucion;
-    private File documentoFundamentacionCarrera;
+    private String documentoFundamentacionCarrera;
     private boolean vigente;
-    private File resolucionDeCreacionDeCarrera;
+    private String resolucionDeCreacionDeCarrera;
 
     public PlanEstudios() {
     }
 
-    public PlanEstudios(String codigo, String nombreCarrera, int anoResolucion, boolean vigente) {
-        this.codigo = codigo;
-        this.nombreCarrera = nombreCarrera;
-        this.anoResolucion = anoResolucion;
-        this.vigente = vigente;
-    }
-
-    public PlanEstudios(List<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, File documentoFundamentacionCarrera, boolean vigente, File resolucionDeCreacionDeCarrera) {
+    public PlanEstudios(ArrayList<Curso> cursos, String codigo, String nombreCarrera, int anoResolucion, boolean vigente, String documentoFundamentacionCarrera, String resolucionDeCreacionDeCarrera) {
         this.cursos = cursos;
         this.codigo = codigo;
         this.nombreCarrera = nombreCarrera;
@@ -33,11 +26,22 @@ public class PlanEstudios {
         this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
     }
 
-    public List<Curso> getCursos() {
+    public PlanEstudios(String codigo, String nombreCarrera, int anoResolucion, boolean vigente, String documentoFundamentacionCarrera, String resolucionDeCreacionDeCarrera) {
+        this.codigo = codigo;
+        this.nombreCarrera = nombreCarrera;
+        this.anoResolucion = anoResolucion;
+        this.documentoFundamentacionCarrera = documentoFundamentacionCarrera;
+        this.vigente = vigente;
+        this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
+    }
+    
+    
+
+    public ArrayList<Curso> getCursos() {
         return cursos;
     }
 
-    public void setCursos(List<Curso> cursos) {
+    public void setCursos(ArrayList<Curso> cursos) {
         this.cursos = cursos;
     }
 
@@ -65,11 +69,11 @@ public class PlanEstudios {
         this.anoResolucion = anoResolucion;
     }
 
-    public File getDocumentoFundamentacionCarrera() {
+    public String getDocumentoFundamentacionCarrera() {
         return documentoFundamentacionCarrera;
     }
 
-    public void setDocumentoFundamentacionCarrera(File documentoFundamentacionCarrera) {
+    public void setDocumentoFundamentacionCarrera(String documentoFundamentacionCarrera) {
         this.documentoFundamentacionCarrera = documentoFundamentacionCarrera;
     }
 
@@ -81,16 +85,24 @@ public class PlanEstudios {
         this.vigente = vigente;
     }
 
-    public File getResolucionDeCreacionDeCarrera() {
+    public String getResolucionDeCreacionDeCarrera() {
         return resolucionDeCreacionDeCarrera;
     }
 
-    public void setResolucionDeCreacionDeCarrera(File resolucionDeCreacionDeCarrera) {
+    public void setResolucionDeCreacionDeCarrera(String resolucionDeCreacionDeCarrera) {
         this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
     }
 
+    @Override
+    public String toString() {
+        return "PlanEstudios{" + "cursos=" + cursos + ", codigo=" + codigo + ", nombreCarrera=" + nombreCarrera + ", anoResolucion=" + anoResolucion + ", documentoFundamentacionCarrera=" + documentoFundamentacionCarrera + ", vigente=" + vigente + ", resolucionDeCreacionDeCarrera=" + resolucionDeCreacionDeCarrera + '}';
+    }
+
+   
     
     
+    
+}
     
 
-}
+    

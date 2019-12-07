@@ -5,10 +5,11 @@ import java.util.*;
 public class Curso {
 
     private Bloque bloque;
-    private List<Curso> cursosRequisitos;
-    private List<Curso> cursosCorrequisitos;
-    private List<Enfasis> enfasis;
+    private List<String> cursosRequisitos;
+    private List<String> cursosCorrequisitos;
+    private List<String> enfasis;
     private List<ProgramaCurso> programas;
+    private List<String> optativos;
     private String planDeEstudios;
     private String sigla;
     private String nombre;
@@ -19,21 +20,13 @@ public class Curso {
     public Curso() {
     }
 
-    public Curso( String sigla, String nombre, int nivel, int creditos,  String planDeEstudios, boolean optativa) {
-        this.planDeEstudios = planDeEstudios;
-        this.sigla = sigla;
-        this.nombre = nombre;
-        this.creditos = creditos;
-        this.nivel = nivel;
-        this.optativa = optativa;
-    }
-    
-    public Curso(Bloque bloque, List<Curso> cursosRequisitos, List<Curso> cursosCorrequisitos, List<Enfasis> enfasis, List<ProgramaCurso> programas, String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
+    public Curso(Bloque bloque, List<String> cursosRequisitos, List<String> cursosCorrequisitos, List<String> enfasis, List<ProgramaCurso> programas, List<String> optativos, String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
         this.bloque = bloque;
         this.cursosRequisitos = cursosRequisitos;
         this.cursosCorrequisitos = cursosCorrequisitos;
         this.enfasis = enfasis;
         this.programas = programas;
+        this.optativos = optativos;
         this.planDeEstudios = planDeEstudios;
         this.sigla = sigla;
         this.nombre = nombre;
@@ -42,6 +35,17 @@ public class Curso {
         this.optativa = optativa;
     }
 
+    public Curso(String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
+        this.planDeEstudios = planDeEstudios;
+        this.sigla = sigla;
+        this.nombre = nombre;
+        this.creditos = creditos;
+        this.nivel = nivel;
+        this.optativa = optativa;
+    }
+
+    
+    
     public Bloque getBloque() {
         return bloque;
     }
@@ -50,27 +54,27 @@ public class Curso {
         this.bloque = bloque;
     }
 
-    public List<Curso> getCursosRequisitos() {
+    public List<String> getCursosRequisitos() {
         return cursosRequisitos;
     }
 
-    public void setCursosRequisitos(List<Curso> cursosRequisitos) {
+    public void setCursosRequisitos(List<String> cursosRequisitos) {
         this.cursosRequisitos = cursosRequisitos;
     }
 
-    public List<Curso> getCursosCorrequisitos() {
+    public List<String> getCursosCorrequisitos() {
         return cursosCorrequisitos;
     }
 
-    public void setCursosCorrequisitos(List<Curso> cursosCorrequisitos) {
+    public void setCursosCorrequisitos(List<String> cursosCorrequisitos) {
         this.cursosCorrequisitos = cursosCorrequisitos;
     }
 
-    public List<Enfasis> getEnfasis() {
+    public List<String> getEnfasis() {
         return enfasis;
     }
 
-    public void setEnfasis(List<Enfasis> enfasis) {
+    public void setEnfasis(List<String> enfasis) {
         this.enfasis = enfasis;
     }
 
@@ -80,6 +84,14 @@ public class Curso {
 
     public void setProgramas(List<ProgramaCurso> programas) {
         this.programas = programas;
+    }
+
+    public List<String> getOptativos() {
+        return optativos;
+    }
+
+    public void setOptativos(List<String> optativos) {
+        this.optativos = optativos;
     }
 
     public String getPlanDeEstudios() {
@@ -130,8 +142,14 @@ public class Curso {
         this.optativa = optativa;
     }
 
+    @Override
+    public String toString() {
+        return "Curso{" + "bloque=" + bloque + ", cursosRequisitos=" + cursosRequisitos + ", cursosCorrequisitos=" + cursosCorrequisitos + ", enfasis=" + enfasis + ", programas=" + programas + ", optativos=" + optativos + ", planDeEstudios=" + planDeEstudios + ", sigla=" + sigla + ", nombre=" + nombre + ", creditos=" + creditos + ", nivel=" + nivel + ", optativa=" + optativa + '}';
+    }
+
     
     
-        
+    
+    
     
 }

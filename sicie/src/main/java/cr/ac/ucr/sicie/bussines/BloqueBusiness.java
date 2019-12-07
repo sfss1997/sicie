@@ -22,9 +22,9 @@ public class BloqueBusiness {
         return bloqueData.listarBloques();
     }
     
-    public List<Bloque> buscarBloques(String id){
+    public Bloque buscarBloquePorCurso(String siglaCurso){
        
-        return bloqueData.buscarBloques(id);
+        return bloqueData.buscarBloquePorCurso(siglaCurso);
     }
     
     public void insertarBloque(Bloque bloque){
@@ -32,7 +32,7 @@ public class BloqueBusiness {
         bloqueData.insertarBloque(bloque);
     }
     
-    public void eliminarBloque(String id){
+    public void eliminarBloque(int id){
     
         bloqueData.eliminarBloque(id);
     }

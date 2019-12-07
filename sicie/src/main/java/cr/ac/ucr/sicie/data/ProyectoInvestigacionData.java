@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +25,7 @@ public class ProyectoInvestigacionData {
     private TipoParticipacionInternaData tipoParticipacionInternaData;
     private TipoParticipacionExternaData tipoParticipacionExternaData;
     private DataSource dataSource;
+
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -52,6 +55,49 @@ public class ProyectoInvestigacionData {
     @Autowired
     public void setTipoParticipacionInternaData(TipoParticipacionInternaData tipoParticipacionInternaData) {
         this.tipoParticipacionInternaData = tipoParticipacionInternaData;
+    }
+
+    public Boolean deleteProyecto(int idProyecto) {
+
+        CallableStatement cstmt = null;
+        String sqlStoredProcedure = "{call DeleteProyectoInvestigacion(?)}";
+        boolean isDeleted = true;
+
+        try (Connection conn = dataSource.getConnection()) {
+            cstmt = conn.prepareCall(sqlStoredProcedure);
+            cstmt.setInt("id_proyecto", idProyecto);
+            cstmt.execute();
+        } catch (SQLException e) {
+            isDeleted = false;
+            e.printStackTrace();
+        } finally {
+            if(cstmt != null) {
+                try {
+                    cstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return isDeleted;
+    }
+
+    public ProyectoInvestigacion getProyectoById(int idProyecto) {
+        String sqlSelect = "SELECT id_proyecto_investigacion, codigo, titulo, fecha_inicio, fecha_final," +
+            " descripcion, objetivo_general, id_recinto"+
+            " FROM ProyectoInvestigacion " +
+            " WHERE id_proyecto_investigacion = ?";
+        return (ProyectoInvestigacion) jdbcTemplate.queryForObject(sqlSelect, new Object[] {idProyecto}, (rs, row) ->
+            new ProyectoInvestigacion(idProyecto,
+                rs.getString("codigo"),
+                rs.getString("titulo"),
+                rs.getString("descripcion"),
+                rs.getString("objetivo_general"),
+                Instant.ofEpochMilli(rs.getDate("fecha_inicio").getTime()).atZone(ZoneId.systemDefault()).toLocalDate(),
+                Instant.ofEpochMilli(rs.getDate("fecha_final").getTime()).atZone(ZoneId.systemDefault()).toLocalDate(),
+                tipoParticipacionExternaData.getTipoParticipacionByIdProyecto(idProyecto),
+                tipoParticipacionInternaData.getTipoParticipacionByIdProyecto(idProyecto),
+                recintoData.getRecintoById(rs.getInt("id_recinto"))));
     }
 
     public List<ProyectoInvestigacion> getProyectosByFiltro(int idRecinto, String tituloProyecto, String docente) {
@@ -102,6 +148,59 @@ public class ProyectoInvestigacionData {
                 tipoParticipacionInternaData.getTipoParticipacionByIdProyecto(rs.getInt("id_proyecto_investigacion")),
                 recintoData.getRecintoById(rs.getInt("id_recinto"))));
         return  proyectosInvestigacion;
+    }
+
+    public ProyectoInvestigacion updateProyectoInvestigacion(ProyectoInvestigacion proyectoInvestigacion) {
+
+        CallableStatement cstmt = null;
+        String sqlStoredProcedure = "{call updateProyectoInvestigacion(?, ?, ?, ?, ?, ?, ?, ?)}";
+
+        try (Connection conn = dataSource.getConnection()) {
+
+            cstmt = conn.prepareCall(sqlStoredProcedure);
+            conn.setAutoCommit(false);
+
+            cstmt.setInt("id_proyecto", proyectoInvestigacion.getIdProyectoInvestigacion());
+            cstmt.setString("codigo", proyectoInvestigacion.getCodigo());
+            cstmt.setString("titulo", proyectoInvestigacion.getTitulo());
+            cstmt.setString("descripcion", proyectoInvestigacion.getDescripcion());
+            cstmt.setString("objetivo_general", proyectoInvestigacion.getObjetivoGeneral());
+            cstmt.setDate("fecha_inicio", convertToDateViaSqlDate(proyectoInvestigacion.getFechaInicio()));
+            cstmt.setDate("fecha_final", convertToDateViaSqlDate(proyectoInvestigacion.getFechaFinal()));
+            cstmt.setInt("id_recinto", proyectoInvestigacion.getRecinto().getIdRecinto());
+            cstmt.execute();
+
+            sqlStoredProcedure = "{call save_participaciones_internas(?, ?, ?)}";
+            cstmt = conn.prepareCall(sqlStoredProcedure);
+            for (TipoParticipacionInterna participacion : proyectoInvestigacion.getTipoParticipacionesInternas()) {
+                cstmt.setInt(1, proyectoInvestigacion.getIdProyectoInvestigacion());
+                cstmt.setInt(2, participacion.getDocente().getIdDocente());
+                cstmt.setInt(3, participacion.getIdParticipacion());
+                cstmt.execute();
+            }
+
+            sqlStoredProcedure = "{call save_participaciones_externas(?, ?, ?)}";
+            cstmt = conn.prepareCall(sqlStoredProcedure);
+            for (TipoParticipacionExterna participacion : proyectoInvestigacion.getTipoParticipacionesExternas()) {
+                cstmt.setInt(1, proyectoInvestigacion.getIdProyectoInvestigacion());
+                cstmt.setInt(2, participacion.getParticipanteExterno().getIdParticipanteExterno());
+                cstmt.setInt(3, participacion.getIdParticipacion());
+                cstmt.execute();
+            }
+            conn.commit();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if(cstmt != null) {
+                try {
+                    cstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return proyectoInvestigacion;
     }
 
     public ProyectoInvestigacion saveProyecto(ProyectoInvestigacion proyectoInvestigacion) {

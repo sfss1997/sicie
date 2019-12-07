@@ -6,12 +6,12 @@ public class Enfasis {
 
     private List<Curso> cursos;
     private int idEnfasis;
-    private int nombreEnfasis;
+    private String nombreEnfasis;
 
     public Enfasis() {
     }
 
-    public Enfasis(List<Curso> cursos, int idEnfasis, int nombreEnfasis) {
+    public Enfasis(List<Curso> cursos, int idEnfasis, String nombreEnfasis) {
         this.cursos = cursos;
         this.idEnfasis = idEnfasis;
         this.nombreEnfasis = nombreEnfasis;
@@ -33,11 +33,11 @@ public class Enfasis {
         this.idEnfasis = idEnfasis;
     }
 
-    public int getNombreEnfasis() {
+    public String getNombreEnfasis() {
         return nombreEnfasis;
     }
 
-    public void setNombreEnfasis(int nombreEnfasis) {
+    public void setNombreEnfasis(String nombreEnfasis) {
         this.nombreEnfasis = nombreEnfasis;
     }
 

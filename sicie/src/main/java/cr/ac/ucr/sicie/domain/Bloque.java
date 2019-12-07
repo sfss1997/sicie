@@ -6,12 +6,12 @@ public class Bloque {
 
     private List<Curso> cursos;
     private int IdBloque;
-    private int nombreDelBloque;
+    private String nombreDelBloque;
 
     public Bloque() {
     }
 
-    public Bloque(List<Curso> cursos, int IdBloque, int nombreDelBloque) {
+    public Bloque(List<Curso> cursos, int IdBloque, String nombreDelBloque) {
         this.cursos = cursos;
         this.IdBloque = IdBloque;
         this.nombreDelBloque = nombreDelBloque;
@@ -33,13 +33,15 @@ public class Bloque {
         this.IdBloque = IdBloque;
     }
 
-    public int getNombreDelBloque() {
+    public String getNombreDelBloque() {
         return nombreDelBloque;
     }
 
-    public void setNombreDelBloque(int nombreDelBloque) {
+    public void setNombreDelBloque(String nombreDelBloque) {
         this.nombreDelBloque = nombreDelBloque;
     }
+
+    
     
     
 

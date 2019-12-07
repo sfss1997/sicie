@@ -25,6 +25,7 @@ import { ProyectoItemComponent } from './components/proyecto-item/proyecto-item.
 import { ProyectoFormComponent } from './components/proyecto-form/proyecto-form.component';
 import { DocenteItemTableComponent } from './components/docente-item-table/docente-item-table.component';
 import { ParticipanteItemTableComponent } from './components/participante-item-table/participante-item-table.component';
+import { NgbdModalContent } from './components/proyectos/proyectos.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {
@@ -80,6 +81,7 @@ import {
     ProyectoFormComponent,
     DocenteItemTableComponent,
     ParticipanteItemTableComponent,
+    NgbdModalContent
   ],
   exports: [
     CdkTableModule,
@@ -114,9 +116,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatOptionModule,
-   
-   
+    MatOptionModule
   ],
   imports: [
     BrowserModule,
@@ -137,7 +137,9 @@ import {
     MatOptionModule,
     MatSelectModule,
     NgbModule
-
+  ],
+  entryComponents: [
+    NgbdModalContent
   ],
   providers: [
     recintoDataService,

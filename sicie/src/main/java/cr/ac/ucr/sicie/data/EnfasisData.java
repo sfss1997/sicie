@@ -12,7 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cr.ac.ucr.sicie.domain.Enfasis;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import javax.sql.DataSource;
 
 /**
  *
@@ -23,31 +25,37 @@ public class EnfasisData {
     
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
-    @Transactional(readOnly=true)
-    public List<Enfasis> listarEnfasis(){
-        List<Enfasis> enfasis = new ArrayList<Enfasis>();
-        String sqlScript = "SELECT * FROM enfasis;";
+    @Autowired
+    private DataSource dataSource;
+   
+    public Iterator<Enfasis> listarEnfasis(){
         
-        return enfasis;
+        String selectSql = "SELECT * FROM enfasis;";
+        return jdbcTemplate
+                .query(selectSql, new Object[]{},
+                        (rs, row) -> new Enfasis(
+                                null,
+                                rs.getInt("id"),
+                                rs.getString("nombre"))).iterator();
     }
     
-    @Transactional(readOnly=true)
-    public List<Enfasis> buscarEnfasis(String id){
-        List<Enfasis> enfasis = new ArrayList<Enfasis>();
-        String sqlScript = "SELECT * FROM enfasis WHERE id="+id+";";
+    
+    public Iterator<String> buscarEnfasisBySiglaCurso(String sigla){
         
-        return enfasis;
+        String selectSql = "SELECT id,nombre FROM enfasis JOIN curso_enfasis ON id=id_enfasis WHERE sigla_curso='"+sigla+"';";
+        return jdbcTemplate
+                .query(selectSql, new Object[]{},
+                        (rs, row) -> new String(rs.getString("nombre"))).iterator();
     }
     
-    @Transactional(readOnly=true)
+    
     public void insertarEnfasis(Enfasis enfasis){
         String sqlScript = "INSERT INTO enfasis VALUES("
                 +enfasis.getIdEnfasis()+","
                 +enfasis.getNombreEnfasis()+");";
     }
     
-    @Transactional(readOnly=true)
+    
     public void eliminarEnfasis(String id){
         String sqlScript = "DELETE FROM enfasis WHERE id="+id+";";
     }
