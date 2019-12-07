@@ -11,7 +11,7 @@ export class CoordinacionDocentesEditarComponent implements OnInit {
 
   message:string;
   toppings = new FormControl();
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  toppingList: string[] = ['Inteligencia Artificial', 'Lenguajes', 'Telemática', 'Deep learning', 'Machine Learning', 'Análisis y diseño'];
 
   constructor(private recintoData: recintoDataService) { }
 

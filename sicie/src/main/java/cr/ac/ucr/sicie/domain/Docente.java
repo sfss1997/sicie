@@ -9,13 +9,13 @@ public class Docente {
 	private String nombre;
 	private String apellidos;
 	private String gradoAcademico;
-	private List<String> topicosDeInteres;
-	private List<String> especializacion;
+	private List<Topico> topicosDeInteres;
+	private List<Especializacion> especializacion;
 	private boolean activo;
 	
 	
 	public Docente(int idDocente,String correoInstitucional, String nombre, String apellidos, String gradoAcademico,
-			List<String> topicosDeInteres, List<String> especializacion, boolean activo) {
+			List<Topico> topicosDeInteres, List<Especializacion> especializacion, boolean activo) {
 //		if (correoInstitucional.equals("") || nombre.equals("") || apellidos.equals("") ||
 //				gradoAcademico.equals("") || topicosDeInteres.equals("")) new RuntimeException("Las etiquetas viene vacías");
 //		if (especializacion.isEmpty()) new RuntimeException("La lista especialización viene vacía");
@@ -95,23 +95,23 @@ public class Docente {
 	}
 
 
-	public List<String> getTopicosDeInteres() {
+	public List<Topico> getTopicosDeInteres() {
 		return topicosDeInteres;
 	}
 
 
-	public void setTopicosDeInteres(List<String> topicosDeInteres) {
+	public void setTopicosDeInteres(List<Topico> topicosDeInteres) {
 //		if (topicosDeInteres.isEmpty()) new RuntimeException("Las etiquetas viene vacías");
 		this.topicosDeInteres = topicosDeInteres;
 	}
 
 
-	public List<String> getEspecializacion() {
+	public List<Especializacion> getEspecializacion() {
 		return especializacion;
 	}
 
 
-	public void setEspecializacion(List<String> especializacion) {
+	public void setEspecializacion(List<Especializacion> especializacion) {
 //		if (especializacion.isEmpty()) new RuntimeException("La lista especialización viene vacía");
 		this.especializacion = especializacion;
 	}

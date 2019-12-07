@@ -103,7 +103,8 @@ public class DocenteData {
 				String sqlInsertDocenteTopicos ="insert into Docente_Topicos_de_Interes(id_docente,id_topico) values(?,?);";
 				PreparedStatement insertTopicos = connection.prepareStatement(sqlInsertDocenteTopicos);
 				insertTopicos.setInt(1, docente.getIdDocente());
-				insertTopicos.setInt(2, getIdTopico(docente.getTopicosDeInteres().get(i)).getIdTopico());
+				Topico topico = getIdTopico(docente.getTopicosDeInteres().get(i).getTopico());
+				insertTopicos.setInt(2, topico.getIdTopico());
 				insertTopicos.execute();
 			}
 			
@@ -111,7 +112,9 @@ public class DocenteData {
 				String sqlInsertDocenteEspecializacion="insert into Docente_Especializacion(id_docente,id_especializacion) values(?,?);";
 				PreparedStatement insertEspecializacion = connection.prepareStatement(sqlInsertDocenteEspecializacion);
 				insertEspecializacion.setInt(1, docente.getIdDocente());
-				insertEspecializacion.setInt(2, getIdEspecializacion(docente.getEspecializacion().get(i)).getIdEspecializacion());
+				Especializacion especializacion = getIdEspecializacion(docente.getEspecializacion().get(i).getEspecializacion());
+				
+				insertEspecializacion.setInt(2, especializacion.getIdEspecializacion());
 				insertEspecializacion.execute();
 			}
 			
@@ -194,7 +197,8 @@ public class DocenteData {
 				String sqlInsertDocenteTopicos ="insert into Docente_Topicos_de_Interes(id_docente,id_topico) values(?,?);";
 				PreparedStatement insertTopicos = connection.prepareStatement(sqlInsertDocenteTopicos);
 				insertTopicos.setInt(1, docente.getIdDocente());
-				insertTopicos.setInt(2, getIdTopico(docente.getTopicosDeInteres().get(i)).getIdTopico());
+				Topico topico1 = getIdTopico(docente.getTopicosDeInteres().get(i).getTopico());
+				insertTopicos.setInt(2, topico1.getIdTopico());
 				insertTopicos.execute();
 			}
 			
@@ -202,7 +206,8 @@ public class DocenteData {
 				String sqlInsertDocenteEspecializacion="insert into Docente_Especializacion(id_docente,id_especializacion) values(?,?);";
 				PreparedStatement insertEspecializacion = connection.prepareStatement(sqlInsertDocenteEspecializacion);
 				insertEspecializacion.setInt(1, docente.getIdDocente());
-				insertEspecializacion.setInt(2, getIdEspecializacion(docente.getEspecializacion().get(i)).getIdEspecializacion());
+				Especializacion especializacion1 = getIdEspecializacion(docente.getEspecializacion().get(i).getEspecializacion());
+				insertEspecializacion.setInt(2, especializacion1.getIdEspecializacion());
 				insertEspecializacion.execute();
 			}
 			
