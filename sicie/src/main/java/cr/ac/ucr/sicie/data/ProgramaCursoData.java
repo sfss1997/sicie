@@ -36,7 +36,7 @@ public class ProgramaCursoData {
     @Autowired
     private DataSource dataSource;
  
-    @Transactional
+  
     public Iterator<ProgramaCurso> listarProgramasCurso(){   
         
          String selectMysql;
@@ -52,7 +52,7 @@ public class ProgramaCursoData {
         
     }
     
-    @Transactional
+   
     public Iterator<ProgramaCurso> buscarProgramasPorCurso(String sigla){
         String selectSql = "SELECT version,vigente,sigla_curso,programa_curso_base FROM programa_curso WHERE sigla_curso="+sigla+";";
         return jdbcTemplate
@@ -64,8 +64,8 @@ public class ProgramaCursoData {
                                 rs.getString("programa_curso_base"))).iterator();
     }
     
-    @Transactional
-    public void insertarProgramaCurso(ProgramaCurso programaCurso,String siglaCurso){
+
+    public void insertarProgramaCurso(ProgramaCurso programaCurso){
        
         Connection connection = null;
         try {
@@ -76,7 +76,7 @@ public class ProgramaCursoData {
                 PreparedStatement stmt = connection.prepareStatement(sqlInsert);
 			stmt.setInt(1, programaCurso.getVersion());
                         stmt.setObject(2, programaCurso.isVigente());
-			stmt.setString(3, siglaCurso);
+			stmt.setString(3,programaCurso.getSiglaCurso());
 			stmt.execute();
         
         connection.commit();
@@ -100,7 +100,7 @@ public class ProgramaCursoData {
         }
     }
     
-    @Transactional
+    
     public void eliminarProgramaCurso(int version,String siglaCurso){
         
         Connection connection = null;
@@ -135,7 +135,7 @@ public class ProgramaCursoData {
         }
     }
     
-    @Transactional
+    
     public void actualizarProgramaCurso(ProgramaCurso programaCurso,String siglaCurso){
        
         Connection connection = null;

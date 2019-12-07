@@ -16,32 +16,31 @@ import java.util.List;
  * @author fabian
  */
 public class EnfasisBusiness {
-    
+
     private EnfasisData enfasisData;
-    
-    public Iterator<Enfasis> listarEnfasis(){
-        
+
+    public Iterator<Enfasis> listarEnfasis() {
+
         return enfasisData.listarEnfasis();
     }
-    
-    public ArrayList<String> buscarEnfasisBySiglaCurso(String Sigla){
+
+    public ArrayList<String> buscarEnfasisBySiglaCurso(String Sigla) {
         Iterator<String> iterator = enfasisData.buscarEnfasisBySiglaCurso(Sigla);
         ArrayList<String> list = new ArrayList<String>();
-         list=(ArrayList<String>) enfasisData.buscarEnfasisBySiglaCurso(Sigla);
-//            while (iterator.hasNext()) {
-//                String enfasis = iterator.next();
-//                list.add(enfasis);
-//            }
+        if (iterator.hasNext()) {
+            iterator.forEachRemaining(list::add);
+        }
+
         return list;
     }
-    
-    public void insertarEnfasis(Enfasis enfasis){
-    
+
+    public void insertarEnfasis(Enfasis enfasis) {
+
         enfasisData.insertarEnfasis(enfasis);
     }
-    
-    public void eliminarEnfasis(String id){
-    
+
+    public void eliminarEnfasis(String id) {
+
         enfasisData.eliminarEnfasis(id);
     }
 }
