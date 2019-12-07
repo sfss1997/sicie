@@ -1,6 +1,8 @@
 <!-- <app-docente-item-table [docente]="docente" hidden="true" (sendDocenteData)="getTipoParticipacion($event)">
 </app-docente-item-table> -->
 <app-navbar-coordinacion></app-navbar-coordinacion>
+
+<!-- Modal para mostrar docentes -->
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Añadir Docentes</h4>
@@ -30,6 +32,7 @@
   </div>
 </ng-template>
 
+<!-- Modal para mostrar participantes -->
 <ng-template #content2 let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Añadir Participantes</h4>
@@ -56,6 +59,7 @@
   </div>
 </ng-template>
 
+<!-- Modal para mostrar mensaje -->
 <ng-template #content3 let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
@@ -71,10 +75,11 @@
   </div>
 </ng-template>
 
+<!-- Formulario -->
 <div class="container">
-    <div style=" align-self:  center; width: 100%;  margin-top: 2%; ">
-        <h4>Nuevo Proyecto de Investigación</h4>
-    </div>
+  <div style=" align-self:  center; width: 100%;  margin-top: 2%; ">
+      <h4>Nuevo Proyecto de Investigación</h4>
+  </div>
   <form #projectForm="ngForm">
     <div class="form-group">
       <label for="codigo">Código</label>

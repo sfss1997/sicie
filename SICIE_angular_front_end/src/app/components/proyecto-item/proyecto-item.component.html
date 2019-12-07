@@ -2,9 +2,10 @@
     {{ proyecto[columna] }}
 </td>
 <td>
-    <a href="">Editar</a>
+    <!-- <a href="">Editar</a> -->
+    <button type="button" class="btn btn-primary btn-xs" (click)="updateProyecto()">Editar</button>
 </td>
 <td>
     <!--<a href="" ng-click="sendProyecto()">Eliminar</a>-->
-    <button type="button" class="btn btn-success" (click)="sendProyecto()">Eliminar</button>
+    <button type="button" class="btn btn-primary btn-xs" (click)="sendProyecto()">Eliminar</button>
 </td>

@@ -18,7 +18,17 @@ export class recintoDataService {
   
   proyectoUrl:string = 'http://localhost:8080/docentes/api/';
 
+  proyectoInvestigacion : ProyectoInvestigacion = new ProyectoInvestigacion();
+
   constructor(private http:HttpClient) { }
+
+  loadProyectData(proyecto: ProyectoInvestigacion) {
+    this.proyectoInvestigacion = proyecto;
+  }
+
+  unloadProyectData() {
+    this.proyectoInvestigacion = new ProyectoInvestigacion();
+  }
 
   editRecinto(newRecinto){
     this.recinto.next(newRecinto);
@@ -28,6 +38,11 @@ export class recintoDataService {
   deleteProyecto(id: number): Observable<any> {
     const url:string = this.proyectoUrl + "proyectoInvestigacion";
     return this.http.delete(`${url}/${id}`, { responseType: 'text' });
+  }
+
+  updateProyect(id: number, proyecto: ProyectoInvestigacion): Observable<Object> {
+    const url:string = this.proyectoUrl + "proyectoInvestigacion";
+    return this.http.put(`${url}/${id}`, proyecto);
   }
 
   saveProyecto(proyectoInvestigacion: ProyectoInvestigacion): Observable<ProyectoInvestigacion> {

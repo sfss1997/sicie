@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProyectoInvestigacion } from 'src/app/models/ProyectoInvestigacion';
+import { Router } from '@angular/router';
+import { recintoDataService } from '../../Services/data.service';
 
 @Component({
   selector: '[app-proyecto-item], app-proyecto-item',
@@ -9,6 +11,7 @@ import { ProyectoInvestigacion } from 'src/app/models/ProyectoInvestigacion';
 export class ProyectoItemComponent implements OnInit {
 
   @Output() sendProyectoData = new EventEmitter<ProyectoInvestigacion>(); // emite informacion del proyecto seleccionado para el componente proyecto-form
+  @Output() updateProyectoData = new EventEmitter<ProyectoInvestigacion>(); // emite informacion del proyecto seleccionado para el componente proyecto-form
   @Input() proyectoInvestigacion: ProyectoInvestigacion;
   @Input() columnas: string[];
 
@@ -16,9 +19,13 @@ export class ProyectoItemComponent implements OnInit {
   proyecto:any;
   nombreProyecto:string;
 
-  constructor() {}
+  constructor(private service:recintoDataService, private router: Router) {}
 
   ngOnInit() {
+
+    if(this.proyectoInvestigacion == undefined) {
+      this.proyectoInvestigacion = new ProyectoInvestigacion();
+    }
 
     // ciclo para saber cual de los docentes que participan del proyecto es el encargado
     this.proyectoInvestigacion.tipoParticipacionesInternas.forEach(participacion => {
@@ -41,6 +48,11 @@ export class ProyectoItemComponent implements OnInit {
 
   sendProyecto() {
     this.sendProyectoData.emit(this.proyectoInvestigacion);
+  }
+
+  updateProyecto() {
+    this.service.loadProyectData(this.proyectoInvestigacion);
+    this.router.navigate(['/addProyecto']);  // define your component where you want to go
   }
 
 }

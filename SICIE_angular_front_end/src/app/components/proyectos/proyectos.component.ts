@@ -77,7 +77,7 @@ export class ProyectosComponent implements OnInit {
     });
   }
 
-  addNuevo(){
+  addNuevo() {
     this.router.navigate(['/addProyecto']);  // define your component where you want to go
   }
 
