@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { recintoDataService } from '../Services/data.service';
-
+import { Recinto } from 'src/app/models/Recinto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-recinto',
@@ -10,13 +11,16 @@ import { recintoDataService } from '../Services/data.service';
 
 
 export class MenuRecintoComponent implements OnInit {
-
+  idRecinto:number;
+  recintos:Recinto[];
   message:string;
 
-  constructor(private recintoData: recintoDataService) { }
+  constructor(private recintoData: recintoDataService, private router: Router) { }
 
   ngOnInit() {
-   
+    this.recintoData.getAllRecintos().subscribe(recintos => {
+      this.recintos = recintos;
+    });
   }
 
   setRecinto(recinto){

@@ -1,6 +1,7 @@
 package cr.ac.ucr.sicie.data;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -20,11 +21,11 @@ public class TopicoData {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public Iterator<Topico> cargarTopicos(){
+	public List<Topico> cargarTopicos(){
 		String selectMysql;
 		selectMysql = "select id_topico, topico from Topico_de_interes";
 		return jdbcTemplate
 				.query(selectMysql, new Object[] {  },
-						(rs, row) -> new Topico(rs.getInt("id_topico"),rs.getString("topico"))).iterator();
+						(rs, row) -> new Topico(rs.getInt("id_topico"),rs.getString("topico")));
 	}
 }

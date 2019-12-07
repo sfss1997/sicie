@@ -37,7 +37,7 @@ public class DocenteController {
 	public ResponseEntity<Docente> guardarDocente(@RequestBody Docente docente, @PathVariable String nombreRecinto) {
 		
 		docenteBusiness.guardarDocente(docente,nombreRecinto);
-		return null;
+		return new ResponseEntity<Docente>(HttpStatus.OK);
 		
 	}
 	

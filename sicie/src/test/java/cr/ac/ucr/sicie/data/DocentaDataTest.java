@@ -25,13 +25,13 @@ public class DocentaDataTest {
 	@Test
 	public void guardarDocente() {
 		List<String> topicosInteres = new ArrayList<String>();
-		topicosInteres.add("Multimedia");
-		assertEquals("Multimedia", topicosInteres.get(0));
+		topicosInteres.add("Inteligencia Artificial");
+		assertEquals("Inteligencia Artificial", topicosInteres.get(0));
 		List<String> especializacion = new ArrayList<String>();
-		especializacion.add("Inteligencia artificial");
-		assertEquals("Inteligencia artificial", especializacion.get(0));
-		Docente docente = new Docente(1,"emmanuel.solanonavarro@ucr.ac.cr","Emmanuel","Solano Navarro","Estudiante",topicosInteres,especializacion,true);
-		docenteData = new DocenteData();
+		especializacion.add("Telemática");
+		assertEquals("Telemática", especializacion.get(0));
+		Docente docente = new Docente(19,"emmanuel.solanonavarro@ucr.ac.cr","Emmanuel","Solano Navarro","Estudiante",topicosInteres,especializacion,true);
+		
 		//Iterator<Docente> listaDocentes = docenteData.cargarDocentes();
 		
 		docenteData.guardarDocente(docente, "Recinto de Paraíso");

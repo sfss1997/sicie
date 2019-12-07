@@ -17,6 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {CdkTableModule} from '@angular/cdk/table';
 import { recintoDataService } from './Services/data.service';
 import { DocentesService } from './model/docentes.service';
+import { especializacionService } from './model/especializacion.service';
+import { topicosService } from './model/topicos.service';
 
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ProyectoItemComponent } from './components/proyecto-item/proyecto-item.component';
@@ -139,7 +141,9 @@ import {
   ],
   providers: [
     recintoDataService,
-    DocentesService 
+    DocentesService,
+    especializacionService,
+    topicosService
   ],
   bootstrap: [AppComponent],
   

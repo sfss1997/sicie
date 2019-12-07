@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { recintoDataService } from '../Services/data.service';
+import { topicosService } from '../model/topicos.service';
+import { especializacionService} from '../model/especializacion.service';
+import { Especializacion } from '../model/especializacion';
+import {  Topico } from '../model/topico';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-coordinacion-docentes-registrar',
@@ -10,7 +15,9 @@ import { recintoDataService } from '../Services/data.service';
 export class CoordinacionDocentesRegistrarComponent implements OnInit {
   message:string;
   toppings = new FormControl();
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  topicos: Topico[];
+  especializaciones: Especializacion[];
+  toppingList: string[] = ['Inteligencia Artificial', 'Lenguajes', 'Telemática', 'Deep learning', 'Machine Learning', 'Análisis y diseño'];
 
   constructor(private recintoData: recintoDataService) { }
 

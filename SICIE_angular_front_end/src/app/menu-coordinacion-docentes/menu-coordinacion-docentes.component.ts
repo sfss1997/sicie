@@ -21,7 +21,7 @@ export class MenuCoordinacionDocentesComponent  {
 
   constructor(private recintoData: recintoDataService, public http: HttpClient) {
 
-    this.data = this.http.get('http://localhost:8080/docentes/api/docente');
+    this.data = this.http.get('http://localhost:8080/docentes/api/docente/listaDocentes');
     this.data.subscribe(data => {
       this.docentes = data;
       console.log(this.docentes);

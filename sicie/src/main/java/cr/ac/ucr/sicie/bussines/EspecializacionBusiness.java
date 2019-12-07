@@ -1,6 +1,7 @@
 package cr.ac.ucr.sicie.bussines;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class EspecializacionBusiness {
 	@Autowired
 	private EspecializacionData especializacionData;
 	
-	public Iterator<Especializacion> cargarEspecializacion(){
+	public List<Especializacion> cargarEspecializacion(){
 		return especializacionData.cargarEspecializacion();
 	}
 }
