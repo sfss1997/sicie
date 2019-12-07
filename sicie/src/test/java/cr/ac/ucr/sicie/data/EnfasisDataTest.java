@@ -24,20 +24,29 @@ public class EnfasisDataTest {
     @Autowired
 
     EnfasisData enfasisData;
-    EnfasisBusiness enfasisBusiness;
-
+    
+    @Test
+    public void insertarEnfasis(){
+        Enfasis enfasis = new Enfasis(null, 01, "Redes");
+        enfasisData.insertarEnfasis(enfasis);
+    }
+    
     @Test
     public void listarEnfasis() {
-//        
-       
-//        Iterator<String> x =  enfasisData.buscarEnfasisBySiglaCurso("if555");
-//        while(x.hasNext()) {
-//            System.out.print(x.next());
-//        }
-           ArrayList x = enfasisBusiness.buscarEnfasisBySiglaCurso("if555");
-           for (int i = 0; i < x.size(); i++) {
-            System.out.print(x.get(i));
+        
+        Iterator<String> x =  enfasisData.buscarEnfasisBySiglaCurso("if555");
+        while(x.hasNext()) {
+            System.out.print(x.next());
         }
-            
+    }
+    
+    @Test
+    public void buscarEnfasisBySiglaCurso(){
+        enfasisData.buscarEnfasisBySiglaCurso("IF500");
+    }
+    
+    @Test
+    public void eliminarEnfasis(){
+        enfasisData.eliminarEnfasis("01");
     }
 }

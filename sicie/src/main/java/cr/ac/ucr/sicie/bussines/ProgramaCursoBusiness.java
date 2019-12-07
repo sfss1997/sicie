@@ -36,9 +36,9 @@ public class ProgramaCursoBusiness {
         return list;
     }
     
-    public void insertarProgramaCurso(ProgramaCurso programaCurso, String siglaCurso){
+    public void insertarProgramaCurso(ProgramaCurso programaCurso){
         
-        programaCursoData.insertarProgramaCurso(programaCurso, siglaCurso);
+        programaCursoData.insertarProgramaCurso(programaCurso);
     }
     
     public void eliminarProgramaCurso(int version,String siglaCurso){
