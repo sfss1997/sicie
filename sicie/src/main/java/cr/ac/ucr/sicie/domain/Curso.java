@@ -35,6 +35,17 @@ public class Curso {
         this.optativa = optativa;
     }
 
+    public Curso(String planDeEstudios, String sigla, String nombre, int creditos, int nivel, boolean optativa) {
+        this.planDeEstudios = planDeEstudios;
+        this.sigla = sigla;
+        this.nombre = nombre;
+        this.creditos = creditos;
+        this.nivel = nivel;
+        this.optativa = optativa;
+    }
+
+    
+    
     public Bloque getBloque() {
         return bloque;
     }

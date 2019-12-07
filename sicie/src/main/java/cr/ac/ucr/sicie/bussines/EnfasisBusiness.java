@@ -19,20 +19,19 @@ public class EnfasisBusiness {
     
     private EnfasisData enfasisData;
     
-    public List<Enfasis> listarEnfasis(){
+    public Iterator<Enfasis> listarEnfasis(){
         
         return enfasisData.listarEnfasis();
     }
     
-    public List<String> buscarEnfasisBySiglaCurso(String Sigla){
-        
+    public ArrayList<String> buscarEnfasisBySiglaCurso(String Sigla){
         Iterator<String> iterator = enfasisData.buscarEnfasisBySiglaCurso(Sigla);
         ArrayList<String> list = new ArrayList<String>();
-         
-            while (iterator.hasNext()) {
-                String enfasis = iterator.next();
-                list.add(enfasis);
-            }
+         list=(ArrayList<String>) enfasisData.buscarEnfasisBySiglaCurso(Sigla);
+//            while (iterator.hasNext()) {
+//                String enfasis = iterator.next();
+//                list.add(enfasis);
+//            }
         return list;
     }
     

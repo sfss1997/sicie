@@ -26,6 +26,17 @@ public class PlanEstudios {
         this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
     }
 
+    public PlanEstudios(String codigo, String nombreCarrera, int anoResolucion, boolean vigente, String documentoFundamentacionCarrera, String resolucionDeCreacionDeCarrera) {
+        this.codigo = codigo;
+        this.nombreCarrera = nombreCarrera;
+        this.anoResolucion = anoResolucion;
+        this.documentoFundamentacionCarrera = documentoFundamentacionCarrera;
+        this.vigente = vigente;
+        this.resolucionDeCreacionDeCarrera = resolucionDeCreacionDeCarrera;
+    }
+    
+    
+
     public ArrayList<Curso> getCursos() {
         return cursos;
     }

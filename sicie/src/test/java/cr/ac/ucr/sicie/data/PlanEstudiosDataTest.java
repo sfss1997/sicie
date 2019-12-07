@@ -23,12 +23,13 @@ public class PlanEstudiosDataTest {
     @Autowired
 	private PlanEstudiosData planEstudiosData;
 
-//        @Test
-//	public void insertarPlan() {
-//            PlanEstudios planEstudios = new PlanEstudios(null, "fgh", "Info", 1997, true, "z", "z");
-//            planEstudiosData.insertarPlanEstudios(planEstudios);
+        @Test
+	public void insertarPlan() {
+            PlanEstudios planEstudios = new PlanEstudios("02", "Informática empresarial", 1997, true, "link", "link");
+            planEstudiosData.insertarPlanEstudios(planEstudios);
            
-//        }
+        }
+        
         @Test
 	public void listarPlan() {
             Iterator<PlanEstudios> x = planEstudiosData.listarPlanesEstudios();
@@ -40,5 +41,28 @@ public class PlanEstudiosDataTest {
                 System.out.print("/n");
             }
            
+        }
+        
+        @Test 
+        public void buscarPlan(){
+            Iterator<PlanEstudios> iterator = planEstudiosData.buscarPlanesEstudios("02");
+         
+         
+            while (iterator.hasNext()) {
+                PlanEstudios planEstudios = iterator.next();
+                System.out.print(planEstudios.toString());
+                System.out.print("/n");
+            }
+        }
+        
+        @Test
+        public void actualizarPlan(){
+            PlanEstudios planEstudios = new PlanEstudios("02", "Informática empresarial", 2005, true, "link2", "link2");
+            planEstudiosData.actualizarPlanEstudios(planEstudios);
+        }
+        
+        @Test
+        public void eliminarPlan(){
+            planEstudiosData.eliminarPlanEstudios("02");
         }
 }

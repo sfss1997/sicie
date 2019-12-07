@@ -5,8 +5,8 @@
  */
 package cr.ac.ucr.sicie.data;
 
-import cr.ac.ucr.sicie.bussines.RequisitoBusiness;
-import cr.ac.ucr.sicie.domain.PlanEstudios;
+import cr.ac.ucr.sicie.bussines.EnfasisBusiness;
+import cr.ac.ucr.sicie.domain.Enfasis;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,13 +19,25 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 
-public class RequisitoBusinessTest {
-    @Autowired
-	private RequisitoBusiness requisitoBusiness;
+public class EnfasisDataTest {
 
-        @Test
-	public void requisitoTest() {
-            
-           requisitoBusiness.buscarCursosRequisito("");
+    @Autowired
+
+    EnfasisData enfasisData;
+    EnfasisBusiness enfasisBusiness;
+
+    @Test
+    public void listarEnfasis() {
+//        
+       
+//        Iterator<String> x =  enfasisData.buscarEnfasisBySiglaCurso("if555");
+//        while(x.hasNext()) {
+//            System.out.print(x.next());
+//        }
+           ArrayList x = enfasisBusiness.buscarEnfasisBySiglaCurso("if555");
+           for (int i = 0; i < x.size(); i++) {
+            System.out.print(x.get(i));
         }
+            
+    }
 }

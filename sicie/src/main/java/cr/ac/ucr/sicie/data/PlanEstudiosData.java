@@ -112,7 +112,7 @@ public class PlanEstudiosData {
             connection = dataSource.getConnection();
             connection.setAutoCommit(false);
 
-            String sqlInsert = "DELETE FROM plan_estudio WHERE codigo=?;";
+            String sqlInsert = "DELETE FROM plan_estudios WHERE codigo=?;";
             PreparedStatement stmt = connection.prepareStatement(sqlInsert);
             stmt.setString(1, codigo);
             stmt.execute();

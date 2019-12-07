@@ -34,7 +34,7 @@ public class BloqueData {
     @Autowired
     private DataSource dataSource;
 
-    @Transactional
+    
     public List<Bloque> listarBloques() {
         List<Bloque> bloques = new ArrayList<Bloque>();
         String sqlScript = "SELECT * FROM bloque;";
@@ -42,21 +42,21 @@ public class BloqueData {
         return bloques;
     }
 
-    @Transactional
+    
     public Bloque buscarBloquePorCurso(String siglaCurso) {
         String sqlSelect = "SELECT nombre FROM bloque B join curso_bloque CB ON B.id = CB.id_bloque WHERE B.id='" + siglaCurso + ";";
         return jdbcTemplate.query(sqlSelect, new BloqueExtractor());
 
     }
 
-    @Transactional
+    
     public void insertarBloque(Bloque bloque) {
         String sqlScript = "INSERT INTO bloque VALUES("
                 + bloque.getIdBloque() + ","
                 + bloque.getNombreDelBloque() + ");";
     }
 
-    @Transactional
+    
     public void eliminarBloque(int id) {
      
         Connection connection = null;
